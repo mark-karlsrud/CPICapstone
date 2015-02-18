@@ -2463,8 +2463,8 @@ public class KinectManager : MonoBehaviour
 		rightHandPositionY.guiText.text = "LFoot Y:" + playerJointsPos[(int)KinectInterop.JointType.FootLeft].y.ToString();
 		rightShoulderPositionX.guiText.text = "LKnee X:" + playerJointsPos[(int)KinectInterop.JointType.KneeLeft].x.ToString();
 		rightShoulderPositionY.guiText.text = "LKnee Y:" + playerJointsPos[(int)KinectInterop.JointType.KneeLeft].y.ToString();
-		rightElbowPositionX.guiText.text = "LHip X:" + playerJointsPos[(int)KinectInterop.JointType.HipLeft].x.ToString();
-		rightElbowPositionY.guiText.text = "LHip Y:" + playerJointsPos[(int)KinectInterop.JointType.HipLeft].y.ToString();
+		rightElbowPositionX.guiText.text = "RFoot X:" + playerJointsPos[(int)KinectInterop.JointType.FootRight].x.ToString();
+		rightElbowPositionY.guiText.text = "RFoot Y:" + playerJointsPos[(int)KinectInterop.JointType.FootRight].y.ToString();
 	}
 	
 }

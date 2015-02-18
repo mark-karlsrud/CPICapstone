@@ -58,7 +58,8 @@ public class KinectGestures
 		Pull,
 		//OUR ADDITIONS BELOW
 		RightBicepFlex,
-		LeftBicepFlex
+		LeftBicepFlex,
+        Running
 	}
 	
 	
@@ -97,6 +98,11 @@ public class KinectGestures
 	private const int shoulderCenterIndex = (int)KinectInterop.JointType.SpineShoulder;
 	private const int leftHipIndex = (int)KinectInterop.JointType.HipLeft;
 	private const int rightHipIndex = (int)KinectInterop.JointType.HipRight;
+
+    private const int rightFootIndex = (int)KinectInterop.JointType.FootRight;
+    private const int leftFootIndex = (int)KinectInterop.JointType.FootLeft;
+
+    public static bool running = false;
 	
 	
 	private static int[] neededJointIndexes = {
@@ -252,6 +258,51 @@ public class KinectGestures
 
 			//check for right bicep flex
 			//MARK ADDED THIS CASE
+
+            // check for SwipeLeft
+            case Gestures.Running:
+
+                switch(gestureData.state)
+				{
+					case 0:  // gesture detection - phase 1
+                        if (jointsTracked[rightFootIndex] && jointsTracked[leftFootIndex] &&
+                            Math.Abs(jointsPos[rightFootIndex].y - jointsPos[leftFootIndex].y) > 0.27)
+						{
+							SetGestureJoint(ref gestureData, timestamp, hipCenterIndex, jointsPos[hipCenterIndex]);
+							gestureData.progress = 0.5f;
+						}
+                        //else
+                            //Debug.Log("---");
+						break;
+				
+					case 1:  // gesture phase 2 = complete
+						if((timestamp - gestureData.timestamp) < 1.5f)
+						{
+                            bool isInPose = (jointsTracked[rightFootIndex] && jointsTracked[leftFootIndex] &&
+                                Math.Abs(jointsPos[rightFootIndex].y - jointsPos[leftFootIndex].y) < 0.1 &&
+                                Math.Abs(jointsPos[rightFootIndex].y - jointsPos[leftFootIndex].y) > 0);
+
+							if(isInPose)
+							{
+								Vector3 jointPos = jointsPos[gestureData.joint];
+								CheckPoseComplete(ref gestureData, timestamp, jointPos, isInPose, 0f);
+                                //Debug.Log("running");
+							}
+                            else
+                            {
+                                //Debug.Log("---");
+                            }
+						}
+						else
+						{
+							// cancel the gesture
+                            //Debug.Log("---");
+							SetGestureCancelled(ref gestureData);
+						}
+						break;
+				}
+				break;
+
 
 			case Gestures.RightBicepFlex:
 				float rightHandX = 0;

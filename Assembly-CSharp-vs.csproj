@@ -5,7 +5,7 @@
 	<Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
 	<ProductVersion>10.0.20506</ProductVersion>
 	<SchemaVersion>2.0</SchemaVersion>
-	<ProjectGuid>{3C447DEA-A2A8-466B-F543-AE1705B71479}</ProjectGuid>
+	<ProjectGuid>{A99A9CE2-A87B-9E42-6AF7-269BF1F06C03}</ProjectGuid>
 	<OutputType>Library</OutputType>
 	<AppDesignerFolder>Properties</AppDesignerFolder>
 	<RootNamespace></RootNamespace>
@@ -80,12 +80,12 @@
      <Compile Include="Assets\Refrence assets\SpeechRecognitionDemo\Scripts\ThirdPersonCamera.cs" />
      <None Include="Assets\Resources\SpeechGrammar.grxml.txt" />
  <Reference Include="ICSharpCode.SharpZipLib">
- <HintPath>D:/kinect_unity/Assets/Refrence assets/KinectScripts/SharpZipLib/ICSharpCode.SharpZipLib.dll</HintPath>
+ <HintPath>C:/Users/edsmit15/Source/Repos/CPICapstone/Assets/Refrence assets/KinectScripts/SharpZipLib/ICSharpCode.SharpZipLib.dll</HintPath>
  </Reference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="Assembly-CSharp-firstpass-vs.csproj">
-      <Project>{E7E3C830-2829-C782-5DB7-86BC4EDFE046}</Project>      <Name>Assembly-CSharp-firstpass-vs</Name>    </ProjectReference>
+      <Project>{A99E8E02-7CFF-65C7-CB5D-76982F7C7384}</Project>      <Name>Assembly-CSharp-firstpass-vs</Name>    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

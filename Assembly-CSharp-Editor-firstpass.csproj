@@ -5,7 +5,7 @@
 	<Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
 	<ProductVersion>10.0.20506</ProductVersion>
 	<SchemaVersion>2.0</SchemaVersion>
-	<ProjectGuid>{79ECE7BD-ECD9-168A-ADEE-BBD7E1B62B6C}</ProjectGuid>
+	<ProjectGuid>{F1D7DAD9-3177-13E4-6F7A-FD895136C3A6}</ProjectGuid>
 	<OutputType>Library</OutputType>
 	<AppDesignerFolder>Properties</AppDesignerFolder>
 	<RootNamespace></RootNamespace>
@@ -50,7 +50,7 @@
      <Compile Include="Assets\Standard Assets\Editor\KinectFacePostBuildCopyPluginData.cs" />
      <None Include="Assets\Resources\SpeechGrammar.grxml.txt" />
  <Reference Include="ICSharpCode.SharpZipLib">
- <HintPath>D:/kinect_unity/Assets/Refrence assets/KinectScripts/SharpZipLib/ICSharpCode.SharpZipLib.dll</HintPath>
+ <HintPath>C:/Users/edsmit15/Source/Repos/CPICapstone/Assets/Refrence assets/KinectScripts/SharpZipLib/ICSharpCode.SharpZipLib.dll</HintPath>
  </Reference>
  <Reference Include="UnityEditor.Graphs">
  <HintPath>C:/Program Files (x86)/Unity/Editor/Data/Managed/UnityEditor.Graphs.dll</HintPath>
@@ -58,7 +58,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="Assembly-CSharp-firstpass.csproj">
-      <Project>{E7E3C830-2829-C782-5DB7-86BC4EDFE046}</Project>      <Name>Assembly-CSharp-firstpass</Name>    </ProjectReference>
+      <Project>{A99E8E02-7CFF-65C7-CB5D-76982F7C7384}</Project>      <Name>Assembly-CSharp-firstpass</Name>    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
