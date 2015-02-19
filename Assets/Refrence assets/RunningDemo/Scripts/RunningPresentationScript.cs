@@ -7,7 +7,7 @@ public class RunningPresentationScript : MonoBehaviour
 {
 	private GestureListener gestureListener;
     System.Timers.Timer timer;
-    //This is a test
+    //This is a test pt 2
 	
 	void Start() 
 	{
