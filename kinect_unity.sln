@@ -1,11 +1,12 @@
-Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2008
-
-Project("{DD522CAB-10CF-447F-8D3E-1262AD6B5A4F}") = "kinect_unity", "Assembly-CSharp-firstpass.csproj", "{E7E3C830-2829-C782-5DB7-86BC4EDFE046}"
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.30723.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp-firstpass", "Assembly-CSharp-firstpass.csproj", "{A99E8E02-7CFF-65C7-CB5D-76982F7C7384}"
 EndProject
-Project("{DD522CAB-10CF-447F-8D3E-1262AD6B5A4F}") = "kinect_unity", "Assembly-CSharp.csproj", "{3C447DEA-A2A8-466B-F543-AE1705B71479}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp", "Assembly-CSharp.csproj", "{A99A9CE2-A87B-9E42-6AF7-269BF1F06C03}"
 EndProject
-Project("{DD522CAB-10CF-447F-8D3E-1262AD6B5A4F}") = "kinect_unity", "Assembly-CSharp-Editor-firstpass.csproj", "{79ECE7BD-ECD9-168A-ADEE-BBD7E1B62B6C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp-Editor-firstpass", "Assembly-CSharp-Editor-firstpass.csproj", "{F1D7DAD9-3177-13E4-6F7A-FD895136C3A6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,33 +14,32 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{E7E3C830-2829-C782-5DB7-86BC4EDFE046}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E7E3C830-2829-C782-5DB7-86BC4EDFE046}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E7E3C830-2829-C782-5DB7-86BC4EDFE046}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E7E3C830-2829-C782-5DB7-86BC4EDFE046}.Release|Any CPU.Build.0 = Release|Any CPU
-		{3C447DEA-A2A8-466B-F543-AE1705B71479}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3C447DEA-A2A8-466B-F543-AE1705B71479}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3C447DEA-A2A8-466B-F543-AE1705B71479}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3C447DEA-A2A8-466B-F543-AE1705B71479}.Release|Any CPU.Build.0 = Release|Any CPU
-		{79ECE7BD-ECD9-168A-ADEE-BBD7E1B62B6C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{79ECE7BD-ECD9-168A-ADEE-BBD7E1B62B6C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{79ECE7BD-ECD9-168A-ADEE-BBD7E1B62B6C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{79ECE7BD-ECD9-168A-ADEE-BBD7E1B62B6C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A99E8E02-7CFF-65C7-CB5D-76982F7C7384}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A99E8E02-7CFF-65C7-CB5D-76982F7C7384}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A99E8E02-7CFF-65C7-CB5D-76982F7C7384}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A99E8E02-7CFF-65C7-CB5D-76982F7C7384}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A99A9CE2-A87B-9E42-6AF7-269BF1F06C03}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A99A9CE2-A87B-9E42-6AF7-269BF1F06C03}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A99A9CE2-A87B-9E42-6AF7-269BF1F06C03}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A99A9CE2-A87B-9E42-6AF7-269BF1F06C03}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F1D7DAD9-3177-13E4-6F7A-FD895136C3A6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F1D7DAD9-3177-13E4-6F7A-FD895136C3A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F1D7DAD9-3177-13E4-6F7A-FD895136C3A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F1D7DAD9-3177-13E4-6F7A-FD895136C3A6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
-												GlobalSection(MonoDevelopProperties) = preSolution
+	GlobalSection(MonoDevelopProperties) = preSolution
 		StartupItem = Assembly-CSharp.csproj
 		Policies = $0
-		$0.TextStylePolicy = $1
+		$0.TextStylePolicy = $3
 		$1.inheritsSet = null
 		$1.scope = text/x-csharp
 		$0.CSharpFormattingPolicy = $2
 		$2.inheritsSet = Mono
 		$2.inheritsScope = text/x-csharp
 		$2.scope = text/x-csharp
-		$0.TextStylePolicy = $3
 		$3.FileWidth = 120
 		$3.TabWidth = 4
 		$3.EolMarker = Unix
@@ -47,5 +47,4 @@ Global
 		$3.inheritsScope = text/plain
 		$3.scope = text/plain
 	EndGlobalSection
-
 EndGlobal
