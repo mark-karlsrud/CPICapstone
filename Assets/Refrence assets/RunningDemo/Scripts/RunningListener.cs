@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections;
 using System;
+using System.Timers;
 //using Windows.Kinect;
 
 public class RunningListener : MonoBehaviour, KinectGestures.GestureListenerInterface
@@ -70,5 +71,4 @@ public class RunningListener : MonoBehaviour, KinectGestures.GestureListenerInte
         // don't do anything here, just reset the gesture state
         return true;
     }
-
 }

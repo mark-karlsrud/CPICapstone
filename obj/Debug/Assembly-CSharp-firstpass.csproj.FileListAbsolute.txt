@@ -1,0 +1,11 @@
+C:\Users\Mark Karlsrud\Source\Repos\CPICapstone\Temp\bin\Debug\Assembly-CSharp-firstpass.dll
+C:\Users\Mark Karlsrud\Source\Repos\CPICapstone\Temp\bin\Debug\Assembly-CSharp-firstpass.pdb
+C:\Users\Mark Karlsrud\Source\Repos\CPICapstone\Temp\bin\Debug\UnityEditor.dll
+C:\Users\Mark Karlsrud\Source\Repos\CPICapstone\Temp\bin\Debug\UnityEngine.dll
+C:\Users\Mark Karlsrud\Source\Repos\CPICapstone\Temp\bin\Debug\Mono.Cecil.dll
+C:\Users\Mark Karlsrud\Source\Repos\CPICapstone\Temp\bin\Debug\nunit.framework.dll
+C:\Users\Mark Karlsrud\Source\Repos\CPICapstone\Temp\bin\Debug\Unity.DataContract.dll
+C:\Users\Mark Karlsrud\Source\Repos\CPICapstone\Temp\bin\Debug\ICSharpCode.NRefactory.dll
+C:\Users\Mark Karlsrud\Source\Repos\CPICapstone\obj\Debug\Assembly-CSharp-firstpass.csprojResolveAssemblyReference.cache
+C:\Users\Mark Karlsrud\Source\Repos\CPICapstone\obj\Debug\Assembly-CSharp-firstpass.dll
+C:\Users\Mark Karlsrud\Source\Repos\CPICapstone\obj\Debug\Assembly-CSharp-firstpass.pdb
