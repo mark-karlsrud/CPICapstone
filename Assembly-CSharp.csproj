@@ -76,8 +76,8 @@
     <Compile Include="Assets\Refrence assets\KinectScripts\SpeechErrorHandler.cs" />
     <Compile Include="Assets\Refrence assets\KinectScripts\SpeechManager.cs" />
     <Compile Include="Assets\Refrence assets\OverlayDemo\Scripts\KinectOverlayer.cs" />
-    <Compile Include="Assets\Refrence assets\RunningDemo\RunningListener.cs" />
-    <Compile Include="Assets\Refrence assets\RunningDemo\RunningPresentationScript.cs" />
+    <Compile Include="Assets\Refrence assets\RunningDemo\Scripts\RunningListener.cs" />
+    <Compile Include="Assets\Refrence assets\RunningDemo\Scripts\RunningPresentationScript.cs" />
     <Compile Include="Assets\Refrence assets\SpeechRecognitionDemo\Scripts\BotControlScript.cs" />
     <Compile Include="Assets\Refrence assets\SpeechRecognitionDemo\Scripts\GameControlScript.cs" />
     <Compile Include="Assets\Refrence assets\SpeechRecognitionDemo\Scripts\ThirdPersonCamera.cs" />
@@ -92,6 +92,7 @@
       <Name>Assembly-CSharp-firstpass</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
 	   Other similar extension points exist, see Microsoft.Common.targets.
