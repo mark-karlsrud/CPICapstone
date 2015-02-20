@@ -10,12 +10,23 @@ public class RunningListener : MonoBehaviour, KinectGestures.GestureListenerInte
     public GUIText GestureInfo;
 
     private bool running;
+    private bool jumping;
 
     public bool IsRunning()
     {
         if (running)
         {
             running = false;
+            return true;
+        }
+
+        return false;
+    }
+    public bool IsJumping()
+    {
+        if (jumping)
+        {
+            jumping = false;
             return true;
         }
 
@@ -28,6 +39,7 @@ public class RunningListener : MonoBehaviour, KinectGestures.GestureListenerInte
         KinectManager manager = KinectManager.Instance;
 
         manager.DetectGesture(userId, KinectGestures.Gestures.Running);
+        manager.DetectGesture(userId, KinectGestures.Gestures.Jump);
 
         if (GestureInfo != null)
         {
@@ -54,6 +66,8 @@ public class RunningListener : MonoBehaviour, KinectGestures.GestureListenerInte
     {
         string sGestureText = gesture + " detected";
 
+
+
         if (GestureInfo != null)
         {
             GestureInfo.guiText.text = sGestureText;
@@ -61,6 +75,9 @@ public class RunningListener : MonoBehaviour, KinectGestures.GestureListenerInte
 
         if (gesture == KinectGestures.Gestures.Running)
             running = true;
+
+        if (gesture == KinectGestures.Gestures.Jump)
+            jumping = true;
 
         return true;
     }

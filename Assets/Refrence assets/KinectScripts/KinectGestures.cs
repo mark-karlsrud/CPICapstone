@@ -272,8 +272,10 @@ public class KinectGestures
                             gestureData.progress = 0.5f;
                         }
                         else
+                        {
                             running = false;
                             //Debug.Log("---");
+                        }
 						break;
 				
 					case 1:  // gesture phase 2 = complete
@@ -288,7 +290,7 @@ public class KinectGestures
 								Vector3 jointPos = jointsPos[gestureData.joint];
 								CheckPoseComplete(ref gestureData, timestamp, jointPos, isInPose, 0f);
                                 running = true;
-                                //Debug.Log("running");
+                                Debug.Log("running");
 							}
                             else
                             {

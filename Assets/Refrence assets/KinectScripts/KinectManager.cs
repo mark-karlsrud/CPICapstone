@@ -7,12 +7,13 @@ using System.Collections.Generic;
 
 public class KinectManager : MonoBehaviour 
 {
+    /*
 	public GUIText rightHandPositionX;
 	public GUIText rightHandPositionY;
 	public GUIText rightShoulderPositionX;
 	public GUIText rightShoulderPositionY;
 	public GUIText rightElbowPositionX;
-	public GUIText rightElbowPositionY;
+	public GUIText rightElbowPositionY;*/
 
 	// How high off the ground is the sensor (in meters).
 	public float sensorHeight = 1.0f;
@@ -2459,12 +2460,14 @@ public class KinectManager : MonoBehaviour
 	}
 
 	public void printNumbers(Vector3[] playerJointsPos){
+        /*
 		rightHandPositionX.guiText.text = "LFoot X:" + playerJointsPos[(int)KinectInterop.JointType.FootLeft].x.ToString();
 		rightHandPositionY.guiText.text = "LFoot Y:" + playerJointsPos[(int)KinectInterop.JointType.FootLeft].y.ToString();
 		rightShoulderPositionX.guiText.text = "LKnee X:" + playerJointsPos[(int)KinectInterop.JointType.KneeLeft].x.ToString();
 		rightShoulderPositionY.guiText.text = "LKnee Y:" + playerJointsPos[(int)KinectInterop.JointType.KneeLeft].y.ToString();
 		rightElbowPositionX.guiText.text = "RFoot X:" + playerJointsPos[(int)KinectInterop.JointType.FootRight].x.ToString();
 		rightElbowPositionY.guiText.text = "RFoot Y:" + playerJointsPos[(int)KinectInterop.JointType.FootRight].y.ToString();
+         * */
 	}
 	
 }
