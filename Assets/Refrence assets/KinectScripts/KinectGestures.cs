@@ -267,11 +267,12 @@ public class KinectGestures
 					case 0:  // gesture detection - phase 1
                         if (jointsTracked[rightFootIndex] && jointsTracked[leftFootIndex] &&
                             Math.Abs(jointsPos[rightFootIndex].y - jointsPos[leftFootIndex].y) > 0.27)
-						{
-							SetGestureJoint(ref gestureData, timestamp, hipCenterIndex, jointsPos[hipCenterIndex]);
-							gestureData.progress = 0.5f;
-						}
-                        //else
+                        {
+                            SetGestureJoint(ref gestureData, timestamp, hipCenterIndex, jointsPos[hipCenterIndex]);
+                            gestureData.progress = 0.5f;
+                        }
+                        else
+                            running = false;
                             //Debug.Log("---");
 						break;
 				
@@ -286,10 +287,12 @@ public class KinectGestures
 							{
 								Vector3 jointPos = jointsPos[gestureData.joint];
 								CheckPoseComplete(ref gestureData, timestamp, jointPos, isInPose, 0f);
+                                running = true;
                                 //Debug.Log("running");
 							}
                             else
                             {
+                                running = false;
                                 //Debug.Log("---");
                             }
 						}
@@ -297,6 +300,7 @@ public class KinectGestures
 						{
 							// cancel the gesture
                             //Debug.Log("---");
+                            running = false;
 							SetGestureCancelled(ref gestureData);
 						}
 						break;
