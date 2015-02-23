@@ -12,6 +12,8 @@ public class GestureListener : MonoBehaviour, KinectGestures.GestureListenerInte
     private bool swipeRight;
     private bool swipeUp;
     private bool swipeDown;
+    private bool tpose;
+    private bool psi;
 
 
     public bool IsSwipeLeft()
@@ -58,22 +60,39 @@ public class GestureListener : MonoBehaviour, KinectGestures.GestureListenerInte
         return false;
     }
 
+    public bool IsTpose()
+    {
+        if (tpose)
+        {
+            tpose = false;
+            return true;
+        }
+        return false;
+    }
+    public bool IsPsi()
+    {
+        if (psi)
+        {
+            psi = false;
+            return true;
+        }
+        return false;
+    }
+
 
     public void UserDetected(long userId, int userIndex)
     {
         // detect these user specific gestures
         KinectManager manager = KinectManager.Instance;
-
-        manager.DetectGesture(userId, KinectGestures.Gestures.SwipeLeft);
-        manager.DetectGesture(userId, KinectGestures.Gestures.SwipeRight);
+        
+        //manager.DetectGesture(userId, KinectGestures.Gestures.SwipeLeft);
+        //manager.DetectGesture(userId, KinectGestures.Gestures.SwipeRight);
         manager.DetectGesture(userId, KinectGestures.Gestures.SwipeUp);
-        manager.DetectGesture(userId, KinectGestures.Gestures.SwipeDown);
+        //manager.DetectGesture(userId, KinectGestures.Gestures.SwipeDown);
         manager.DetectGesture(userId, KinectGestures.Gestures.Tpose);
-        manager.DetectGesture(userId, KinectGestures.Gestures.RightBicepFlex);
-        manager.DetectGesture(userId, KinectGestures.Gestures.LeftBicepFlex);
-        manager.DetectGesture(userId, KinectGestures.Gestures.Psi);
-        manager.DetectGesture(userId, KinectGestures.Gestures.Running);
-        manager.DetectGesture(userId, KinectGestures.Gestures.Jump);
+        //manager.DetectGesture(userId, KinectGestures.Gestures.RightBicepFlex);
+        //manager.DetectGesture(userId, KinectGestures.Gestures.LeftBicepFlex);
+        //manager.DetectGesture(userId, KinectGestures.Gestures.Psi);
 
         if (GestureInfo != null)
         {
@@ -113,6 +132,10 @@ public class GestureListener : MonoBehaviour, KinectGestures.GestureListenerInte
             swipeUp = true;
         else if (gesture == KinectGestures.Gestures.SwipeDown)
             swipeDown = true;
+        else if (gesture == KinectGestures.Gestures.Tpose)
+            tpose = true;
+        else if (gesture == KinectGestures.Gestures.Psi)
+            psi = true;
 
         return true;
     }
