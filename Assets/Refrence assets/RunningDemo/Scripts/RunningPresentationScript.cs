@@ -6,7 +6,7 @@ using System.Timers;
 public class RunningPresentationScript : MonoBehaviour 
 {
 	private RunningListener listener;
-    public GameObject player;
+    public CharacterController player;
     System.Timers.Timer timer;
     //This is a test pt 2
 	
@@ -24,6 +24,15 @@ public class RunningPresentationScript : MonoBehaviour
 
         //player.rigidbody.AddForce(player.transform.up * 250);
         //player.transform.Translate(1f * Vector3.forward);
+
+        /*
+        float jumpSpeed = 100.0F;
+        float gravity = 20.0F;
+        Vector3 moveDirection = Vector3.zero;
+        moveDirection.y = jumpSpeed;
+        moveDirection.y -= gravity * Time.deltaTime;
+        player.Move(moveDirection * Time.deltaTime);
+        */
     }
 
     void Update()
@@ -38,12 +47,12 @@ public class RunningPresentationScript : MonoBehaviour
         }
         if (!timer.Enabled && KinectGestures.running)//listener.IsRunning())
         {
-            timer.Interval = 1000;
+            timer.Interval = 2000;
             timer.Enabled = true;
         }
         if (timer.Enabled)
         {
-            player.transform.Translate(2 * Time.deltaTime * player.transform.forward);
+            player.transform.Translate(6 * Time.deltaTime * player.transform.forward);
         }
         else
         {
@@ -51,12 +60,21 @@ public class RunningPresentationScript : MonoBehaviour
         }
         if (listener.IsJumping())
         {
-            if (timer.Enabled)
+            /*if (timer.Enabled)
             {
                 player.transform.Translate(2 * Time.deltaTime * (player.transform.forward + player.transform.up));
             }
             else
                 player.rigidbody.AddForce(player.transform.up * 250);
+             * */
+
+            //float speed = 6.0F;
+            float jumpSpeed = 200.0F;
+            float gravity = 20.0F;
+            Vector3 moveDirection = Vector3.zero;
+            moveDirection.y = jumpSpeed;
+            moveDirection.y -= gravity * Time.deltaTime;
+            player.Move(moveDirection * Time.deltaTime);
         }
     }
 
