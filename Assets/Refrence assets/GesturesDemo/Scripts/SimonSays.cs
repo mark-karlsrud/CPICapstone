@@ -12,7 +12,7 @@ public class SimonSays : MonoBehaviour
 	public GUIText Output;
 	public GUIText Prompt;
     public GUIText Score;
-    private bool pickPose;
+    private bool pickPose,fail;
     public GUIText timeLimitText;
 
     public int timeLimit = 10;
@@ -50,14 +50,21 @@ public class SimonSays : MonoBehaviour
 	void Update () {
         if (pickPose)
             pickAPose();
-		if(!timer.Enabled)
-			checkPose ();
-        timeLimitText.guiText.text = "TIME TO COMPLETE POSE: " + timeRemaining.ToString();
+        if (!timer.Enabled)
+        {
+            checkPose();
+            timeLimitText.guiText.text = "Timer: " + timeRemaining.ToString();
+        }
+        else
+        {
+            timeLimitText.guiText.text = "";
+        }
 	}
 
 	public void pickAPose ()
 	{
         Input.guiText.text = "";
+        Output.guiText.text = "";
 		System.Random rand = new System.Random();
 		currentIndex = rand.Next(0,Poses.Length);
 		Prompt.guiText.text = "Do the following pose: " + Poses[currentIndex];
@@ -66,24 +73,42 @@ public class SimonSays : MonoBehaviour
 	}
 
 	public void checkPose(){
-		string doingPose = Input.guiText.text.Replace(" detected","");
-		if(doingPose == Poses[currentIndex]){
-			Output.guiText.text = "SUCCESS";
+        if (fail)
+        {
+            Output.guiText.text = "FAIL";
             Prompt.guiText.text = "";
-            int score = Convert.ToInt32(Score.guiText.text);
-            Score.guiText.text = (score + 1).ToString();
-            
-            if (!timer.Enabled)
+            fail = false;
+
+            timer = new Timer();
+            timer.Elapsed += new ElapsedEventHandler(OnTimedEvent);
+            timer.Interval = 3000; //wait 3 seconds
+            timer.Enabled = true;
+        }
+        else
+        {
+            string doingPose = Input.guiText.text.Replace(" detected", "");
+
+            //Correct pose
+            if (doingPose == Poses[currentIndex])
             {
-                timer = new Timer();
-                timer.Elapsed += new ElapsedEventHandler(OnTimedEvent);
-                timer.Interval = 3000; //wait 3 seconds
-                timer.Enabled = true;
+                Output.guiText.text = "SUCCESS";
+                Prompt.guiText.text = "";
+                int score = Convert.ToInt32(Score.guiText.text);
+                Score.guiText.text = (score + 1).ToString();
+
+                if (!timer.Enabled)
+                {
+                    timer = new Timer();
+                    timer.Elapsed += new ElapsedEventHandler(OnTimedEvent);
+                    timer.Interval = 3000; //wait 3 seconds
+                    timer.Enabled = true;
+                }
             }
-		}
-		else{
-			Output.guiText.text = "FAIL";
-		}
+            else //Not the right pose
+            {
+                
+            }
+        }
 	}
 
 	private void OnTimedEvent(object source, ElapsedEventArgs e)
@@ -94,10 +119,15 @@ public class SimonSays : MonoBehaviour
 
     private void OnTimedEvent2(object source, ElapsedEventArgs e)
     {
-        timeRemaining--;
-        if (timeRemaining == 0)
+        if (!timer.Enabled)
         {
-            poseTimer.Enabled = false;
+            timeRemaining--;
+        }
+        if (timeRemaining == 0) //FAILED TO COMPLETE POSE
+        {
+            //poseTimer.Enabled = false;
+            fail = true;
+            timeRemaining = timeLimit;
         }
     }
 }
