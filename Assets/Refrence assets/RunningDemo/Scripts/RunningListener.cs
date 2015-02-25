@@ -9,8 +9,7 @@ public class RunningListener : MonoBehaviour, KinectGestures.GestureListenerInte
     // GUI Text to display the gesture messages.
     public GUIText GestureInfo;
 
-    private bool running;
-    private bool jumping;
+    private bool running,jumping,leftTurn,rightTurn;
 
     public bool IsRunning()
     {
@@ -32,6 +31,26 @@ public class RunningListener : MonoBehaviour, KinectGestures.GestureListenerInte
 
         return false;
     }
+    public bool IsRightTurn()
+    {
+        if (rightTurn)
+        {
+            rightTurn = false;
+            return true;
+        }
+
+        return false;
+    }
+    public bool IsLeftTurn()
+    {
+        if (leftTurn)
+        {
+            leftTurn = false;
+            return true;
+        }
+
+        return false;
+    }
 
     public void UserDetected(long userId, int userIndex)
     {
@@ -40,6 +59,8 @@ public class RunningListener : MonoBehaviour, KinectGestures.GestureListenerInte
 
         manager.DetectGesture(userId, KinectGestures.Gestures.Running);
         manager.DetectGesture(userId, KinectGestures.Gestures.Jump);
+        manager.DetectGesture(userId, KinectGestures.Gestures.RightTurn);
+        manager.DetectGesture(userId, KinectGestures.Gestures.LeftTurn);
 
         if (GestureInfo != null)
         {
@@ -78,6 +99,18 @@ public class RunningListener : MonoBehaviour, KinectGestures.GestureListenerInte
 
         if (gesture == KinectGestures.Gestures.Jump)
             jumping = true;
+
+        if (gesture == KinectGestures.Gestures.RaiseRightHand)
+        {
+            rightTurn = true;
+            return false;
+        }
+
+        if (gesture == KinectGestures.Gestures.RaiseLeftHand)
+        {
+            leftTurn = true;
+            return false;
+        }
 
         return true;
     }

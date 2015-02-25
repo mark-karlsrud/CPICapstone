@@ -59,7 +59,9 @@ public class KinectGestures
 		//OUR ADDITIONS BELOW
 		RightBicepFlex,
 		LeftBicepFlex,
-        Running
+        Running,
+        RightTurn,
+        LeftTurn
 	}
 	
 	
@@ -102,7 +104,7 @@ public class KinectGestures
     private const int rightFootIndex = (int)KinectInterop.JointType.FootRight;
     private const int leftFootIndex = (int)KinectInterop.JointType.FootLeft;
 
-    public static bool running = false;
+    public static bool running,turnLeft,turnRight;
 	
 	
 	private static int[] neededJointIndexes = {
@@ -291,6 +293,7 @@ public class KinectGestures
 								CheckPoseComplete(ref gestureData, timestamp, jointPos, isInPose, 0f);
                                 running = true;
                                 Debug.Log("running");
+                                return;
 							}
                             else
                             {
@@ -395,16 +398,59 @@ public class KinectGestures
 				}
 				break;
 
+                /***** The Following two are used for turning *****/
+            case Gestures.RightTurn:
+                switch (gestureData.state)
+                {
+                    case 0:  // gesture detection
+                        if (jointsTracked[rightHandIndex] && jointsTracked[rightShoulderIndex] &&
+                           (jointsPos[rightHandIndex].y - jointsPos[rightShoulderIndex].y) > 0.1f)
+                        {
+                            SetGestureJoint(ref gestureData, timestamp, rightHandIndex, jointsPos[rightHandIndex]);
+                        }
+                        turnRight = false;
+                        break;
+
+                    case 1:  // gesture complete
+                        bool isInPose = jointsTracked[rightHandIndex] && jointsTracked[rightShoulderIndex] &&
+                            (jointsPos[rightHandIndex].y - jointsPos[rightShoulderIndex].y) > 0.1f;
+                        turnRight = isInPose;
+
+                        break;
+                }
+                break;
+
+            // check for RaiseLeftHand
+            case Gestures.LeftTurn:
+                switch (gestureData.state)
+                {
+                    case 0:  // gesture detection
+                        if (jointsTracked[leftHandIndex] && jointsTracked[leftShoulderIndex] &&
+                                (jointsPos[leftHandIndex].y - jointsPos[leftShoulderIndex].y) > 0.1f)
+                        {
+                            SetGestureJoint(ref gestureData, timestamp, leftHandIndex, jointsPos[leftHandIndex]);
+                        }
+                        turnLeft = false;
+                        break;
+
+                    case 1:  // gesture complete
+                        bool isInPose = jointsTracked[leftHandIndex] && jointsTracked[leftShoulderIndex] &&
+                            (jointsPos[leftHandIndex].y - jointsPos[leftShoulderIndex].y) > 0.1f;
+                        turnLeft = isInPose;
+                        break;
+                }
+                break;
+
 			// check for RaiseRightHand
 			case Gestures.RaiseRightHand:
 				switch(gestureData.state)
 				{
 					case 0:  // gesture detection
-						if(jointsTracked[rightHandIndex] && jointsTracked[rightShoulderIndex] &&
-					       (jointsPos[rightHandIndex].y - jointsPos[rightShoulderIndex].y) > 0.1f)
-						{
-							SetGestureJoint(ref gestureData, timestamp, rightHandIndex, jointsPos[rightHandIndex]);
-						}
+                        if (jointsTracked[rightHandIndex] && jointsTracked[rightShoulderIndex] &&
+                           (jointsPos[rightHandIndex].y - jointsPos[rightShoulderIndex].y) > 0.1f)
+                        {
+                            SetGestureJoint(ref gestureData, timestamp, rightHandIndex, jointsPos[rightHandIndex]);
+                        }
 						break;
 							
 					case 1:  // gesture complete
@@ -1282,6 +1328,8 @@ public class KinectGestures
 				break;
 
 			// here come more gesture-cases
+
+            
 		}
 	}
 

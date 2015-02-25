@@ -7,8 +7,9 @@ public class RunningPresentationScript : MonoBehaviour
 {
 	private RunningListener listener;
     public CharacterController player;
-    System.Timers.Timer timer;
-    //This is a test pt 2
+    Timer timer;
+    
+    public float turnSpeed = 50f;
 	
 	void Start() 
 	{
@@ -58,6 +59,8 @@ public class RunningPresentationScript : MonoBehaviour
         {
             player.transform.Translate(Vector3.zero);
         }
+
+
         if (listener.IsJumping())
         {
             /*if (timer.Enabled)
@@ -75,6 +78,21 @@ public class RunningPresentationScript : MonoBehaviour
             moveDirection.y = jumpSpeed;
             moveDirection.y -= gravity * Time.deltaTime;
             player.Move(moveDirection * Time.deltaTime);
+        }
+
+        //TURN LEFT
+        if (KinectGestures.turnLeft)//listener.IsLeftTurn())
+        {
+            player.transform.Rotate(Vector3.up, -turnSpeed * Time.deltaTime);
+        }
+        //TURN RIGHT
+        else if (KinectGestures.turnRight)//listener.IsRightTurn())
+        {
+            player.transform.Rotate(Vector3.down, -turnSpeed * Time.deltaTime);
+        }
+        else
+        {
+            player.transform.Rotate(Vector3.down, 0f);
         }
     }
 
