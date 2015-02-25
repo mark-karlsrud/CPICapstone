@@ -4,21 +4,23 @@ using System.Collections;
 public class SphereSmarts : MonoBehaviour {
 	public GameObject player;
 	public GameObject icoCollider;
-	public bool didCollide, run ,start;
+	public bool didCollide, run ,start, reverse;
 	
 	
 	void Start()
 	{
 		start = true;
-		rigidbody.velocity = Vector3.right * 5;
+		reverse = false;
+		rigidbody.velocity = Vector3.left * 10;
 		
 	}
-	// Update is called once per frame
+
 	
 	void Update()
 	{
-		if (start) {
-			//transform.Translate (new Vector3 (-1, 0, 0)*Time.deltaTime);	
+		if (reverse) 
+		{
+			//rigidbody.velocity = Vector3.up * 10;
 		}
 		
 		if (run) {
@@ -27,10 +29,5 @@ public class SphereSmarts : MonoBehaviour {
 		}
 	}
 	
-	void OnCollisionEnter (Collision other) {
-		if(other.gameObject.tag == "Player") {
-			didCollide = true;
-			run=true;
-		}
-	}
+
 }

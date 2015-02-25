@@ -4,6 +4,7 @@ using System.Collections;
 public class GrabDropScript : MonoBehaviour 
 {
 	public GameObject[] draggableObjects;
+	public GameObject player;
 	public float dragSpeed = 3.0f;
 	public Material selectedObjectMaterial;
 	
@@ -26,6 +27,16 @@ public class GrabDropScript : MonoBehaviour
 	
 	void Update() 
 	{
+		Debug.Log (player.transform.position.z);
+		/*
+		for(int i = 0; i < draggableObjects.Length; i++){
+			GameObject g = draggableObjects[i];
+			g.transform.position = new Vector3(g.transform.position.x,g.transform.position.y,0f);
+			draggableObjects[i] = g;
+		}*/
+		
+		player.transform.localPosition = new Vector3(player.transform.position.x,player.transform.position.y,0f);
+
 		manager = InteractionManager.Instance;
 
 		if(manager != null && manager.IsInteractionInited())
