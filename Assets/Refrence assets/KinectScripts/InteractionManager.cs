@@ -22,6 +22,7 @@ public class InteractionManager : MonoBehaviour
 	public Texture gripHandTexture;
 	public Texture releaseHandTexture;
 	public Texture normalHandTexture;
+    public Texture normalHandTexture2;
 
 	// Smooth factor for cursor movement
 	public float smoothFactor = 3f;
@@ -502,6 +503,7 @@ public class InteractionManager : MonoBehaviour
 					if(controlMouseCursor && !useHandCursor)
 					{
 						MouseControl.MouseMove(cursorScreenPos, debugText);
+                        
 					}
 				}
 				else

@@ -61,7 +61,7 @@ public class RunningListener : MonoBehaviour, KinectGestures.GestureListenerInte
         manager.DetectGesture(userId, KinectGestures.Gestures.Jump);
         manager.DetectGesture(userId, KinectGestures.Gestures.RightTurn);
         manager.DetectGesture(userId, KinectGestures.Gestures.LeftTurn);
-
+        
         if (GestureInfo != null)
         {
             GestureInfo.guiText.text = "Run!";

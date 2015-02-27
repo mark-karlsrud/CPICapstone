@@ -5,65 +5,83 @@ using System.Timers;
 
 public class Spawner : MonoBehaviour {
 
-	public GameObject ball, barrel;
-	public float waitTimer =3.0f;
-	public float waitTimer2 =5.0f;
-	Timer timer,shootTimer;
+	public GameObject ball, barrel,evilBall,healthBall;
+	Timer timer,shootTimer, startTimer;
 	private bool goingUp;
-	private bool shoot;
+	private bool shoot, shootHealthBall,startGame;
+	public bool shootEvilBall;
 	private Random rand;
+	public float random,random2 ;
 	
 	void Start () 
 	{
+	
 		rand = new Random ();
 
-		//transform.Translate (Vector3.up * Time.deltaTime);
+		startTimer = new Timer();
+		startTimer.Elapsed += new ElapsedEventHandler(OnTimedEventStart);
+		startTimer.Interval = 1000;
+		startTimer.Enabled = true;
 		timer = new Timer();
 		timer.Elapsed += new ElapsedEventHandler(OnTimedEvent);
-		timer.Interval = 1500;
+		timer.Interval = 3000;
 		timer.Enabled = true;
 		shootTimer = new Timer();
 		shootTimer.Elapsed += new ElapsedEventHandler(OnTimedEventShoot);
-		shootTimer.Interval = 900;
+		shootTimer.Interval = 2500;
 		shootTimer.Enabled = true;
+
 	
 	}
-	
-	
+
 	void Update () 
 	{
-		if (shoot)
-		{
-			Instantiate (ball,barrel.transform.position,Quaternion.identity);
-			shoot = false;
+		if (startGame) {
+			random = Random.Range (0f, 10900.5f);
+			random2 = Random.Range (0f, 10900.5f);
+			if (shoot) {
+				Instantiate (ball, barrel.transform.position, Quaternion.identity);
+				shoot = false;
+			}
+			if (goingUp) {
+
+				transform.Translate (Vector3.up * 0.1f);
+
+			} else {
+
+				transform.Translate (Vector3.down * 0.1f);
+			}
+			if (random > 10880) {
+				//shootEvilBall = true;
+				Instantiate (evilBall, barrel.transform.position, Quaternion.identity);
+				//shootEvilBall = false;
+
+			}
+			if (random2 > 10888) {//&& shootEvilBall ) 
+				Instantiate (healthBall, barrel.transform.position, Quaternion.identity);
+			}
+
 		}
-		if (goingUp) 
-		{
-
-			///Instantiate (ball);
-			transform.Translate (Vector3.up * 0.1f);
-
-		} else 
-		{
-			//Instantiate (ball,barrel.transform.position,Quaternion.identity);
-			transform.Translate (Vector3.down * 0.1f);
-		}
-
 	}
 		
 	private void OnTimedEvent(object source, ElapsedEventArgs e)
 	{
 		goingUp = !goingUp;
+		
 
-		Debug.Log("timer event");
-		//timer.Enabled = false;
 	}
 	private void OnTimedEventShoot(object source, ElapsedEventArgs e)
 	{
 		shoot = true;
 		
-		Debug.Log("timer event");
-		//timer.Enabled = false;
+
+	
+	}
+	private void OnTimedEventStart(object source, ElapsedEventArgs e)
+	{
+
+		startGame = true;
 	}
 }
+
 

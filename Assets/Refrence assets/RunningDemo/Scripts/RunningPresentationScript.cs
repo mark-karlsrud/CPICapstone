@@ -7,14 +7,16 @@ public class RunningPresentationScript : MonoBehaviour
 {
 	private RunningListener listener;
     public CharacterController player;
+    public Graphics g;
     Timer timer;
-    
+
     public float turnSpeed = 50f;
 	
 	void Start() 
 	{
 		// hide mouse cursor
 		Screen.showCursor = false;
+        
 			
 		// get the gestures listener
 		listener = Camera.main.GetComponent<RunningListener>();
@@ -38,61 +40,48 @@ public class RunningPresentationScript : MonoBehaviour
 
     void Update()
     {
-      
+        //motor.jumping.enabled = true;
         //player.transform.Translate(0.01f * Vector3.forward);
      
 
-        if (KinectGestures.running)//listener.IsRunning())//
+        if (KinectGestures.running)//listener.IsRunning())
         {
-            Debug.Log("RUNNING");
-        }
-        if (!timer.Enabled && KinectGestures.running)//listener.IsRunning())
-        {
-            timer.Interval = 2000;
+            timer.Interval = 250;
             timer.Enabled = true;
         }
         if (timer.Enabled)
         {
-            player.transform.Translate(6 * Time.deltaTime * player.transform.forward);
-        }
-        else
-        {
-            player.transform.Translate(Vector3.zero);
+            player.transform.Translate(6 * Time.deltaTime * Vector3.forward);
         }
 
 
         if (listener.IsJumping())
         {
-            /*if (timer.Enabled)
-            {
-                player.transform.Translate(2 * Time.deltaTime * (player.transform.forward + player.transform.up));
-            }
-            else
-                player.rigidbody.AddForce(player.transform.up * 250);
-             * */
-
-            //float speed = 6.0F;
-            float jumpSpeed = 200.0F;
-            float gravity = 20.0F;
-            Vector3 moveDirection = Vector3.zero;
-            moveDirection.y = jumpSpeed;
-            moveDirection.y -= gravity * Time.deltaTime;
-            player.Move(moveDirection * Time.deltaTime);
+            //motor.jumping.enabled = true;
+                //jumping.jumpDir = Vector3.Slerp(Vector3.up, groundNormal, jumping.steepPerpAmount);
+            
+                //player.transform.Translate(150 * Time.deltaTime * (player.transform.forward + player.transform.up));
+        
+            //float jumpSpeed = 200.0F;
+            //float gravity = 20.0F;
+            //Vector3 moveDirection = Vector3.zero;
+            //moveDirection.y = jumpSpeed;
+            //moveDirection.y -= gravity * Time.deltaTime;
+            //player.Move(moveDirection * Time.deltaTime);
         }
+
+
 
         //TURN LEFT
         if (KinectGestures.turnLeft)//listener.IsLeftTurn())
         {
-            player.transform.Rotate(Vector3.up, -turnSpeed * Time.deltaTime);
+            player.transform.Rotate(0, turnSpeed, 0);
         }
         //TURN RIGHT
         else if (KinectGestures.turnRight)//listener.IsRightTurn())
         {
-            player.transform.Rotate(Vector3.down, -turnSpeed * Time.deltaTime);
-        }
-        else
-        {
-            player.transform.Rotate(Vector3.down, 0f);
+            player.transform.Rotate(0, -turnSpeed, 0);
+            //player.transform.Rotate(Vector3.down, -turnSpeed * Time.deltaTime);
         }
     }
 
@@ -102,4 +91,5 @@ public class RunningPresentationScript : MonoBehaviour
 
         timer.Enabled = false;
     }
+
 }

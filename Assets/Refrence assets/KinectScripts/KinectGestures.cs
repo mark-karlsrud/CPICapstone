@@ -268,7 +268,7 @@ public class KinectGestures
 				{
 					case 0:  // gesture detection - phase 1
                         if (jointsTracked[rightFootIndex] && jointsTracked[leftFootIndex] &&
-                            Math.Abs(jointsPos[rightFootIndex].y - jointsPos[leftFootIndex].y) > 0.27)
+                            Math.Abs(jointsPos[rightFootIndex].y - jointsPos[leftFootIndex].y) > 0.1)
                         {
                             SetGestureJoint(ref gestureData, timestamp, hipCenterIndex, jointsPos[hipCenterIndex]);
                             gestureData.progress = 0.5f;
@@ -284,8 +284,7 @@ public class KinectGestures
 						if((timestamp - gestureData.timestamp) < 1.5f)
 						{
                             bool isInPose = (jointsTracked[rightFootIndex] && jointsTracked[leftFootIndex] &&
-                                Math.Abs(jointsPos[rightFootIndex].y - jointsPos[leftFootIndex].y) < 0.1 &&
-                                Math.Abs(jointsPos[rightFootIndex].y - jointsPos[leftFootIndex].y) > 0);
+                                Math.Abs(jointsPos[rightFootIndex].y - jointsPos[leftFootIndex].y) < 0.13);
 
 							if(isInPose)
 							{
@@ -1161,7 +1160,7 @@ public class KinectGestures
 				{
 					case 0:  // gesture detection - phase 1
 						if(jointsTracked[hipCenterIndex] && 
-							(jointsPos[hipCenterIndex].y > 0.8f) && (jointsPos[hipCenterIndex].y < 1.3f))
+							(jointsPos[hipCenterIndex].y > 0.8f) && (jointsPos[hipCenterIndex].y < 1.3f)) //Standing
 						{
 							SetGestureJoint(ref gestureData, timestamp, hipCenterIndex, jointsPos[hipCenterIndex]);
 							gestureData.progress = 0.5f;

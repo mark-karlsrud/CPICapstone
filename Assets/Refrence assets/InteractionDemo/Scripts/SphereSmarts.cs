@@ -5,7 +5,7 @@ public class SphereSmarts : MonoBehaviour {
 	public GameObject player;
 	public GameObject icoCollider;
 	public bool didCollide, run ,start, reverse;
-	
+	private Score score;
 	
 	void Start()
 	{
@@ -18,16 +18,13 @@ public class SphereSmarts : MonoBehaviour {
 	
 	void Update()
 	{
-		if (reverse) 
-		{
-			//rigidbody.velocity = Vector3.up * 10;
-		}
-		
-		if (run) {
-			run = true;
-			//transform.Translate (new Vector3 (1, 0, 0)*Time.deltaTime);	
-		}
+
 	}
 	
-
+	void OnCollisionEnter (Collision other) {
+		if(other.gameObject.tag == "Player") {
+			score.score+=50;
+			
+		}
+	}
 }
