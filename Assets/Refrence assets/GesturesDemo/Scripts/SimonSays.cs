@@ -53,7 +53,7 @@ public class SimonSays : MonoBehaviour
         if (!timer.Enabled)
         {
             checkPose();
-            timeLimitText.guiText.text = "Timer: " + timeRemaining.ToString();
+            timeLimitText.guiText.text = timeRemaining.ToString();
         }
         else
         {
