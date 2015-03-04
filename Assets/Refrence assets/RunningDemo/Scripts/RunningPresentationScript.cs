@@ -24,26 +24,10 @@ public class RunningPresentationScript : MonoBehaviour
         timer.Elapsed += new ElapsedEventHandler(OnTimedEvent);
         timer.Interval = 3000;
         timer.Enabled = false;
-
-        //player.rigidbody.AddForce(player.transform.up * 250);
-        //player.transform.Translate(1f * Vector3.forward);
-
-        /*
-        float jumpSpeed = 100.0F;
-        float gravity = 20.0F;
-        Vector3 moveDirection = Vector3.zero;
-        moveDirection.y = jumpSpeed;
-        moveDirection.y -= gravity * Time.deltaTime;
-        player.Move(moveDirection * Time.deltaTime);
-        */
     }
 
     void Update()
     {
-        //motor.jumping.enabled = true;
-        //player.transform.Translate(0.01f * Vector3.forward);
-     
-
         if (KinectGestures.running)//listener.IsRunning())
         {
             timer.Interval = 250;
@@ -53,10 +37,15 @@ public class RunningPresentationScript : MonoBehaviour
         {
             player.transform.Translate(6 * Time.deltaTime * Vector3.forward);
         }
-
-
-        if (listener.IsJumping())
+        if (KinectGestures.jumping && KinectGestures.running)
         {
+            timer.Interval = 500;
+            timer.Enabled = true;
+        }
+
+
+        //if (listener.IsJumping())
+        //{
             //motor.jumping.enabled = true;
                 //jumping.jumpDir = Vector3.Slerp(Vector3.up, groundNormal, jumping.steepPerpAmount);
             
@@ -68,14 +57,15 @@ public class RunningPresentationScript : MonoBehaviour
             //moveDirection.y = jumpSpeed;
             //moveDirection.y -= gravity * Time.deltaTime;
             //player.Move(moveDirection * Time.deltaTime);
-        }
+        //}
 
 
 
         //TURN LEFT
         if (KinectGestures.turnLeft)//listener.IsLeftTurn())
         {
-            player.transform.Rotate(0, turnSpeed, 0);
+            listener.jumping = true;
+            //player.transform.Rotate(0, turnSpeed, 0);
         }
         //TURN RIGHT
         else if (KinectGestures.turnRight)//listener.IsRightTurn())

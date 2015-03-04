@@ -9,7 +9,8 @@ public class RunningListener : MonoBehaviour, KinectGestures.GestureListenerInte
     // GUI Text to display the gesture messages.
     public GUIText GestureInfo;
 
-    private bool running,jumping,leftTurn,rightTurn;
+    private bool running,leftTurn,rightTurn;
+    public bool jumping;
 
     public bool IsRunning()
     {
@@ -58,7 +59,7 @@ public class RunningListener : MonoBehaviour, KinectGestures.GestureListenerInte
         KinectManager manager = KinectManager.Instance;
 
         manager.DetectGesture(userId, KinectGestures.Gestures.Running);
-        manager.DetectGesture(userId, KinectGestures.Gestures.Jump);
+        manager.DetectGesture(userId, KinectGestures.Gestures.MyJump);
         manager.DetectGesture(userId, KinectGestures.Gestures.RightTurn);
         manager.DetectGesture(userId, KinectGestures.Gestures.LeftTurn);
         
@@ -72,8 +73,9 @@ public class RunningListener : MonoBehaviour, KinectGestures.GestureListenerInte
     {
         if (GestureInfo != null)
         {
-            GestureInfo.guiText.text = string.Empty;
+            GestureInfo.guiText.text = "USER LOST";
         }
+        KinectGestures.running = false;
     }
 
     public void GestureInProgress(long userId, int userIndex, KinectGestures.Gestures gesture,
@@ -95,10 +97,14 @@ public class RunningListener : MonoBehaviour, KinectGestures.GestureListenerInte
         }
 
         if (gesture == KinectGestures.Gestures.Running)
+        {
             running = true;
+        }
 
-        if (gesture == KinectGestures.Gestures.Jump)
+        if (gesture == KinectGestures.Gestures.MyJump)
+        {
             jumping = true;
+        }
 
         if (gesture == KinectGestures.Gestures.RaiseRightHand)
         {

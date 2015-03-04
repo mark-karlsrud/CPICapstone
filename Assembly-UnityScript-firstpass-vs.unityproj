@@ -5,7 +5,7 @@
 	<Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
 	<ProductVersion>10.0.20506</ProductVersion>
 	<SchemaVersion>2.0</SchemaVersion>
-	<ProjectGuid>{D2C84DBE-50E3-4FDF-489A-C96640220560}</ProjectGuid>
+	<ProjectGuid>{E298E40B-238F-798B-14E8-DE879DBBAEAB}</ProjectGuid>
 	<OutputType>Library</OutputType>
 	<AppDesignerFolder>Properties</AppDesignerFolder>
 	<RootNamespace></RootNamespace>
@@ -55,7 +55,7 @@
      <None Include="Assets\Refrence assets\InteractionDemo\MOVED FILES.txt" />
      <None Include="Assets\Refrence assets\GesturesDemo\MOVED FILES.txt" />
  <Reference Include="ICSharpCode.SharpZipLib">
- <HintPath>C:/Users/pebradle/Desktop/cpicapstone/Assets/Refrence assets/KinectScripts/SharpZipLib/ICSharpCode.SharpZipLib.dll</HintPath>
+ <HintPath>C:/Users/mkarlsru/Source/Repos/CPICapstone/Assets/Refrence assets/KinectScripts/SharpZipLib/ICSharpCode.SharpZipLib.dll</HintPath>
  </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
