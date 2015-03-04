@@ -46,18 +46,18 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Final\Breakout\Scripts\ColliderDestroy.cs" />
+     <Compile Include="Assets\Final\Breakout\Scripts\EvilBall.cs" />
+     <Compile Include="Assets\Final\Breakout\Scripts\GrabDropScript.cs" />
+     <Compile Include="Assets\Final\Breakout\Scripts\GuiWindowScript.cs" />
+     <Compile Include="Assets\Final\Breakout\Scripts\ScoreBoerd.cs" />
+     <Compile Include="Assets\Final\Breakout\Scripts\Spawner.cs" />
+     <Compile Include="Assets\Final\Breakout\Scripts\SphereSmarts.cs" />
+     <Compile Include="Assets\Final\Simon Says\Scripts\GestureListener.cs" />
+     <Compile Include="Assets\Final\Simon Says\Scripts\PresentationScript.cs" />
+     <Compile Include="Assets\Final\Simon Says\Scripts\SimonSays.cs" />
      <Compile Include="Assets\HealBall.cs" />
      <Compile Include="Assets\Refrence assets\FaceTrackingDemo\Scripts\ModelFaceController.cs" />
-     <Compile Include="Assets\Refrence assets\GesturesDemo\Scripts\GestureListener.cs" />
-     <Compile Include="Assets\Refrence assets\GesturesDemo\Scripts\PresentationScript.cs" />
-     <Compile Include="Assets\Refrence assets\GesturesDemo\Scripts\SimonSays.cs" />
-     <Compile Include="Assets\Refrence assets\InteractionDemo\Scripts\ColliderDestroy.cs" />
-     <Compile Include="Assets\Refrence assets\InteractionDemo\Scripts\EvilBall.cs" />
-     <Compile Include="Assets\Refrence assets\InteractionDemo\Scripts\GrabDropScript.cs" />
-     <Compile Include="Assets\Refrence assets\InteractionDemo\Scripts\GuiWindowScript.cs" />
-     <Compile Include="Assets\Refrence assets\InteractionDemo\Scripts\ScoreBoerd.cs" />
-     <Compile Include="Assets\Refrence assets\InteractionDemo\Scripts\Spawner.cs" />
-     <Compile Include="Assets\Refrence assets\InteractionDemo\Scripts\SphereSmarts.cs" />
      <Compile Include="Assets\Refrence assets\KinectScripts\AvatarController.cs" />
      <Compile Include="Assets\Refrence assets\KinectScripts\AvatarControllerClassic.cs" />
      <Compile Include="Assets\Refrence assets\KinectScripts\Cubeman\CubemanController.cs" />
@@ -88,6 +88,8 @@
      <Compile Include="Assets\Refrence assets\SpeechRecognitionDemo\Scripts\ThirdPersonCamera.cs" />
      <Compile Include="Assets\Score.cs" />
      <None Include="Assets\Resources\SpeechGrammar.grxml.txt" />
+     <None Include="Assets\Refrence assets\InteractionDemo\MOVED FILES.txt" />
+     <None Include="Assets\Refrence assets\GesturesDemo\MOVED FILES.txt" />
  <Reference Include="ICSharpCode.SharpZipLib">
  <HintPath>C:/Users/pebradle/Desktop/cpicapstone/Assets/Refrence assets/KinectScripts/SharpZipLib/ICSharpCode.SharpZipLib.dll</HintPath>
  </Reference>

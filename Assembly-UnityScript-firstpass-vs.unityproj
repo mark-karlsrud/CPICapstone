@@ -52,6 +52,8 @@
      <Compile Include="Assets\Standard Assets\Character Controllers\Sources\Scripts\js\ThirdPersonCamera.js" />
      <Compile Include="Assets\Standard Assets\Character Controllers\Sources\Scripts\js\ThirdPersonController.js" />
      <None Include="Assets\Resources\SpeechGrammar.grxml.txt" />
+     <None Include="Assets\Refrence assets\InteractionDemo\MOVED FILES.txt" />
+     <None Include="Assets\Refrence assets\GesturesDemo\MOVED FILES.txt" />
  <Reference Include="ICSharpCode.SharpZipLib">
  <HintPath>C:/Users/pebradle/Desktop/cpicapstone/Assets/Refrence assets/KinectScripts/SharpZipLib/ICSharpCode.SharpZipLib.dll</HintPath>
  </Reference>

@@ -1,9 +1,9 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace />
-  <MonoDevelop.Ide.Workbench ActiveDocument="..\..\..\Documents\Void Main22\Void David Mejia\Assets\Materials\C#\WaypointGraph.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Refrence assets\GesturesDemo\MOVED FILES.txt">
     <Files>
-      <File FileName="..\..\..\Documents\Void Main22\Void David Mejia\Assets\Materials\C#\AlienAI.cs" Line="107" Column="1" />
-      <File FileName="..\..\..\Documents\Void Main22\Void David Mejia\Assets\Materials\C#\WaypointGraph.cs" Line="31" Column="15" />
+      <File FileName="Assets\Final\Breakout\Scripts\SphereSmarts.cs" Line="1" Column="1" />
+      <File FileName="Assets\Refrence assets\GesturesDemo\MOVED FILES.txt" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
