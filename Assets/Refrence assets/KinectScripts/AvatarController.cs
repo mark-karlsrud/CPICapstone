@@ -324,6 +324,7 @@ public class AvatarController : MonoBehaviour
 		offsetNode.transform.rotation = transform.rotation;
 		
 		// take model transform as body root
+        offsetNode.transform.parent = transform.parent;
 		transform.parent = offsetNode.transform;
 		transform.localPosition = Vector3.zero;
 		transform.localRotation = Quaternion.identity;

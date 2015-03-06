@@ -62,7 +62,7 @@ public class KinectGestures
         Running,
         RightTurn,
         LeftTurn,
-        MyJump
+        Hurdle
 	}
 	
 	
@@ -108,7 +108,8 @@ public class KinectGestures
     private const int leftKneeIndex = (int)KinectInterop.JointType.KneeLeft;
     private const int rightKneeIndex = (int)KinectInterop.JointType.KneeRight;
 
-    public static bool running,turnLeft,turnRight,jumping;
+    public static bool running, turnLeft, turnRight, jumping, hurdling;
+    public static float ground = 0f;
 	
 	private static int[] neededJointIndexes = {
 		/*leftHandIndex, rightHandIndex, leftElbowIndex, rightElbowIndex, leftShoulderIndex, rightShoulderIndex,
@@ -255,6 +256,13 @@ public class KinectGestures
 	// estimate the next state and completeness of the gesture
 	public static void CheckForGesture(long userId, ref GestureData gestureData, float timestamp, ref Vector3[] jointsPos, ref bool[] jointsTracked)
 	{
+        if (ground == 0f)
+        {
+            ground = jointsPos[rightFootIndex].y;
+            Debug.Log("ground:" + ground);
+        }
+
+
 		if(gestureData.complete)
 			return;
 		
@@ -264,7 +272,7 @@ public class KinectGestures
 			//check for right bicep flex
 			//MARK ADDED THIS CASE
 
-            // check for SwipeLeft
+            // check for Running
             case Gestures.Running:
 
                 switch(gestureData.state)
@@ -281,6 +289,7 @@ public class KinectGestures
                             running = false;
                             //Debug.Log("---");
                         }
+                        
 						break;
 				
 					case 1:  // gesture phase 2 = complete
@@ -1157,22 +1166,19 @@ public class KinectGestures
 				}
 				break;
 
-            // check for myJump
-            case Gestures.MyJump:
-                switch (gestureData.state)
-                {
-                    case 0:  
-                            bool isInPose = jointsTracked[leftKneeIndex] && jointsTracked[leftHipIndex] &&
-                                        jointsPos[leftHipIndex].y < jointsPos[leftKneeIndex].y;
-                            jumping = isInPose;
-                            if (isInPose)
-                            {
-                                Vector3 jointPos = jointsPos[gestureData.joint];
-                                CheckPoseComplete(ref gestureData, timestamp, jointPos, isInPose, 0f);
-                            }
-                            break;
-                }
-                break;
+            // check for hurdle
+            case Gestures.Hurdle:
+                        if (jointsTracked[rightFootIndex] && jointsTracked[leftFootIndex] &&
+                                jointsPos[rightFootIndex].y > ground + 0.15f
+                            )
+                        {
+                            hurdling = true;
+                        }
+                        else
+                        {
+                            hurdling = false;
+                        }
+						break;
 			
 			// check for Jump
 			case Gestures.Jump:
@@ -1198,7 +1204,7 @@ public class KinectGestures
 							if(isInPose)
 							{
 								Vector3 jointPos = jointsPos[gestureData.joint];
-								//CheckPoseComplete(ref gestureData, timestamp, jointPos, isInPose, 0f);
+								CheckPoseComplete(ref gestureData, timestamp, jointPos, isInPose, 0f);
 							}
 						}
 						else

@@ -37,11 +37,6 @@ public class RunningPresentationScript : MonoBehaviour
         {
             player.transform.Translate(6 * Time.deltaTime * Vector3.forward);
         }
-        if (KinectGestures.jumping && KinectGestures.running)
-        {
-            timer.Interval = 500;
-            timer.Enabled = true;
-        }
 
 
         //if (listener.IsJumping())
@@ -64,8 +59,12 @@ public class RunningPresentationScript : MonoBehaviour
         //TURN LEFT
         if (KinectGestures.turnLeft)//listener.IsLeftTurn())
         {
-            listener.jumping = true;
-            //player.transform.Rotate(0, turnSpeed, 0);
+            if (KinectGestures.turnRight)
+            {
+                KinectGestures.hurdling = true;
+            }
+            else
+                player.transform.Rotate(0, turnSpeed, 0);
         }
         //TURN RIGHT
         else if (KinectGestures.turnRight)//listener.IsRightTurn())
@@ -77,7 +76,7 @@ public class RunningPresentationScript : MonoBehaviour
 
     private void OnTimedEvent(object source, ElapsedEventArgs e)
     {
-        Debug.Log("timer event");
+        //Debug.Log("timer event");
 
         timer.Enabled = false;
     }

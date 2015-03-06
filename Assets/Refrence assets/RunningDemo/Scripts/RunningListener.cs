@@ -10,7 +10,7 @@ public class RunningListener : MonoBehaviour, KinectGestures.GestureListenerInte
     public GUIText GestureInfo;
 
     private bool running,leftTurn,rightTurn;
-    public bool jumping;
+    public bool hurdling;
 
     public bool IsRunning()
     {
@@ -22,11 +22,11 @@ public class RunningListener : MonoBehaviour, KinectGestures.GestureListenerInte
 
         return false;
     }
-    public bool IsJumping()
+    public bool IsHurdling()
     {
-        if (jumping)
+        if (hurdling)
         {
-            jumping = false;
+            hurdling = false;
             return true;
         }
 
@@ -59,7 +59,7 @@ public class RunningListener : MonoBehaviour, KinectGestures.GestureListenerInte
         KinectManager manager = KinectManager.Instance;
 
         manager.DetectGesture(userId, KinectGestures.Gestures.Running);
-        manager.DetectGesture(userId, KinectGestures.Gestures.MyJump);
+        //manager.DetectGesture(userId, KinectGestures.Gestures.Hurdle);
         manager.DetectGesture(userId, KinectGestures.Gestures.RightTurn);
         manager.DetectGesture(userId, KinectGestures.Gestures.LeftTurn);
         
@@ -95,26 +95,26 @@ public class RunningListener : MonoBehaviour, KinectGestures.GestureListenerInte
         {
             GestureInfo.guiText.text = sGestureText;
         }
-
+        
         if (gesture == KinectGestures.Gestures.Running)
         {
-            running = true;
+            //running = true;
         }
 
-        if (gesture == KinectGestures.Gestures.MyJump)
+        if (gesture == KinectGestures.Gestures.Hurdle)
         {
-            jumping = true;
+            //hurdling = true;
         }
 
         if (gesture == KinectGestures.Gestures.RaiseRightHand)
         {
-            rightTurn = true;
+            //rightTurn = true;
             return false;
         }
 
         if (gesture == KinectGestures.Gestures.RaiseLeftHand)
         {
-            leftTurn = true;
+            //leftTurn = true;
             return false;
         }
 

@@ -199,12 +199,12 @@ public class CharacterMotor : MonoBehaviour
 
     private void UpdateFunction()
     {
-        if (KinectGestures.jumping)//((RunningListener)c.GetComponent("RunningListener")).IsJumping())
+        if (KinectGestures.hurdling)//((RunningListener)c.GetComponent("RunningListener")).IsJumping())
         {
-            Debug.Log("jump");
+            //Debug.Log("hurdle");
             jumping.enabled = true;
             inputJump = true;
-            KinectGestures.jumping = false;
+            KinectGestures.hurdling = false;
         }
 
         // We copy the actual velocity into a temporary variable that we can manipulate.
