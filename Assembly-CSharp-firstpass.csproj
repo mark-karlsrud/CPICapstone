@@ -50,6 +50,7 @@
      <Compile Include="Assets\Standard Assets\Character Controllers\Sources\Scripts\CharacterMotor.cs" />
      <Compile Include="Assets\Standard Assets\Character Controllers\Sources\Scripts\FPSInputController.cs" />
      <Compile Include="Assets\Standard Assets\Character Controllers\Sources\Scripts\MouseLook.cs" />
+     <Compile Include="Assets\Standard Assets\Character Controllers\Sources\Scripts\MouseLookCamera.cs" />
      <Compile Include="Assets\Standard Assets\Character Controllers\Sources\Scripts\PlatformInputController.cs" />
      <Compile Include="Assets\Standard Assets\CollectionMap.cs" />
      <Compile Include="Assets\Standard Assets\EventPump.cs" />
@@ -166,7 +167,10 @@
      <Compile Include="Assets\Standard Assets\Windows\Kinect\TrackingConfidence.cs" />
      <Compile Include="Assets\Standard Assets\Windows\Kinect\TrackingState.cs" />
      <Compile Include="Assets\Standard Assets\Windows\Kinect\Vector4.cs" />
+     <None Include="Assets\dreamlo\README_FIRST.txt" />
      <None Include="Assets\Resources\SpeechGrammar.grxml.txt" />
+     <None Include="Assets\Standard Assets\Particles\Sources\Shaders\Particle Alpha Blend (Queue +100).shader" />
+     <None Include="Assets\Standard Assets\Skyboxes\_skybox info.txt" />
      <None Include="Assets\Refrence assets\InteractionDemo\MOVED FILES.txt" />
      <None Include="Assets\Refrence assets\GesturesDemo\MOVED FILES.txt" />
  <Reference Include="ICSharpCode.SharpZipLib">

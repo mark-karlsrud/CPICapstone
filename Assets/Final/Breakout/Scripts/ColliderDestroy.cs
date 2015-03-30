@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class ColliderDestroy : MonoBehaviour {
@@ -15,8 +15,24 @@ public class ColliderDestroy : MonoBehaviour {
 
 
 	void OnCollisionEnter (Collision other) {
-		if(other.gameObject.tag == "Ball") {
-			other.gameObject.collider.enabled=false;
-}
+		if(other.gameObject.tag == "evil"||other.gameObject.tag == "heal") 
+		{
+			Destroy(other.gameObject);
+		}	
+		if (other.gameObject.tag == "Ball") 
+		{
+			ScoreBoard.score-=4;
+			Destroy(other.gameObject);
+			
+		}
+		if (other.gameObject.tag == "grabBall") 
+		{
+			//ScoreBoard.score-=7;
+
+			
+		}
+	
+
+
 	}
 }

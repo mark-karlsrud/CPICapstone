@@ -46,17 +46,26 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\BlueBall.cs" />
+     <Compile Include="Assets\Final\Breakout\Scripts\ChangeScene.cs" />
      <Compile Include="Assets\Final\Breakout\Scripts\ColliderDestroy.cs" />
+     <Compile Include="Assets\Final\Breakout\Scripts\Controller.cs" />
+     <Compile Include="Assets\Final\Breakout\Scripts\EndSceaneGUI.cs" />
      <Compile Include="Assets\Final\Breakout\Scripts\EvilBall.cs" />
      <Compile Include="Assets\Final\Breakout\Scripts\GrabDropScript.cs" />
      <Compile Include="Assets\Final\Breakout\Scripts\GuiWindowScript.cs" />
-     <Compile Include="Assets\Final\Breakout\Scripts\ScoreBoerd.cs" />
+     <Compile Include="Assets\Final\Breakout\Scripts\SaveHighScore.cs" />
+     <Compile Include="Assets\Final\Breakout\Scripts\ScoreBoard.cs" />
+     <Compile Include="Assets\Final\Breakout\Scripts\ScoreGUI.cs" />
      <Compile Include="Assets\Final\Breakout\Scripts\Spawner.cs" />
      <Compile Include="Assets\Final\Breakout\Scripts\SphereSmarts.cs" />
-     <Compile Include="Assets\Final\Simon Says\Scripts\GestureListener.cs" />
      <Compile Include="Assets\Final\Simon Says\Scripts\PresentationScript.cs" />
-     <Compile Include="Assets\Final\Simon Says\Scripts\SimonSays.cs" />
+     <Compile Include="Assets\Final\Simon Says\Scripts\SimonSaysListener.cs" />
+     <Compile Include="Assets\Final\Simon Says\muscle march\animation_test.cs" />
+     <Compile Include="Assets\GrabBalls.cs" />
      <Compile Include="Assets\HealBall.cs" />
+     <Compile Include="Assets\Huge Mocap Library\demo\scripts\demo.cs" />
+     <Compile Include="Assets\Huge Mocap Library\demo\scripts\smoothFollow.cs" />
      <Compile Include="Assets\MoveCube.cs" />
      <Compile Include="Assets\Refrence assets\FaceTrackingDemo\Scripts\ModelFaceController.cs" />
      <Compile Include="Assets\Refrence assets\KinectScripts\AvatarController.cs" />
@@ -83,6 +92,7 @@
      <Compile Include="Assets\Refrence assets\KinectScripts\SpeechManager.cs" />
      <Compile Include="Assets\Refrence assets\OverlayDemo\Scripts\KinectOverlayer.cs" />
      <Compile Include="Assets\Refrence assets\RunningDemo\Scripts\CharacterMotor.cs" />
+     <Compile Include="Assets\Refrence assets\RunningDemo\Scripts\Class1.cs" />
      <Compile Include="Assets\Refrence assets\RunningDemo\Scripts\FPSInputController.cs" />
      <Compile Include="Assets\Refrence assets\RunningDemo\Scripts\MouseLook.cs" />
      <Compile Include="Assets\Refrence assets\RunningDemo\Scripts\PlatformInputController.cs" />
@@ -92,7 +102,21 @@
      <Compile Include="Assets\Refrence assets\SpeechRecognitionDemo\Scripts\GameControlScript.cs" />
      <Compile Include="Assets\Refrence assets\SpeechRecognitionDemo\Scripts\ThirdPersonCamera.cs" />
      <Compile Include="Assets\Score.cs" />
+     <Compile Include="Assets\SimonSaysFinal.cs" />
+     <Compile Include="Assets\dreamlo\LeaderBoardSample.cs" />
+     <Compile Include="Assets\dreamlo\dreamloLeaderBoard.cs" />
+     <Compile Include="Assets\dreamlo\dreamloPromoCode.cs" />
+     <Compile Include="Assets\enemy\animation_enemy.cs" />
+     <Compile Include="Assets\freezeX.cs" />
+     <Compile Include="Assets\grabPowerUp.cs" />
+     <Compile Include="Assets\maincharacter\animation_play.cs" />
+     <Compile Include="Assets\moveScript01.cs" />
+     <Compile Include="Assets\playsound.cs" />
+     <Compile Include="Assets\prefab\animationtest.cs" />
+     <None Include="Assets\dreamlo\README_FIRST.txt" />
      <None Include="Assets\Resources\SpeechGrammar.grxml.txt" />
+     <None Include="Assets\Standard Assets\Particles\Sources\Shaders\Particle Alpha Blend (Queue +100).shader" />
+     <None Include="Assets\Standard Assets\Skyboxes\_skybox info.txt" />
      <None Include="Assets\Refrence assets\InteractionDemo\MOVED FILES.txt" />
      <None Include="Assets\Refrence assets\GesturesDemo\MOVED FILES.txt" />
  <Reference Include="Assembly-UnityScript-firstpass">

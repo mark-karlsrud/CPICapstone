@@ -11,6 +11,10 @@ public class RunningPresentationScript : MonoBehaviour
     Timer timer;
 
     public float turnSpeed = 50f;
+	public float runSpeed = 4.5f;
+
+	bool stoppedRunning = false;
+	bool startedRunning = false;
 	
 	void Start() 
 	{
@@ -28,14 +32,38 @@ public class RunningPresentationScript : MonoBehaviour
 
     void Update()
     {
-        if (KinectGestures.running)//listener.IsRunning())
+        if (KinectGestures.running) {//listener.IsRunning())
+			if(!startedRunning){
+				startedRunning = true;
+				//player.GetComponent<CharacterMotor> ().movement.velocity += runSpeed * transform.forward;
+			}
+			timer.Interval = 250;
+			timer.Enabled = true;
+			stoppedRunning = false;
+
+		} else {
+			if(!stoppedRunning){
+				//player.GetComponent<CharacterMotor> ().movement.velocity -= runSpeed * transform.forward;
+			}
+			stoppedRunning = true;
+			startedRunning = false;
+		}
+        if (timer.Enabled)// && !player.collider.)
         {
-            timer.Interval = 250;
-            timer.Enabled = true;
-        }
-        if (timer.Enabled)
-        {
-            player.transform.Translate(6 * Time.deltaTime * Vector3.forward);
+			CharacterMotor m = player.GetComponent<CharacterMotor>();
+			m.inputMoveDirection = transform.forward;
+
+
+          //  player.transform.Translate(runSpeed * Time.deltaTime * Vector3.forward);
+
+			//player.GetComponent<CharacterMotor>().movement.velocity = 
+			//	runSpeed*transform.forward;
+
+			// +
+					//Vector3.up*player.GetComponent<CharacterMotor>().movement.velocity.y /2;
+			
+
+
         }
 
 
