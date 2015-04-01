@@ -59,8 +59,9 @@
      <Compile Include="Assets\Final\Breakout\Scripts\ScoreGUI.cs" />
      <Compile Include="Assets\Final\Breakout\Scripts\Spawner.cs" />
      <Compile Include="Assets\Final\Breakout\Scripts\SphereSmarts.cs" />
+     <Compile Include="Assets\Final\Simon Says\Scripts\GestureListener.cs" />
      <Compile Include="Assets\Final\Simon Says\Scripts\PresentationScript.cs" />
-     <Compile Include="Assets\Final\Simon Says\Scripts\SimonSaysListener.cs" />
+     <Compile Include="Assets\Final\Simon Says\Scripts\SimonSaysFinal.cs" />
      <Compile Include="Assets\Final\Simon Says\muscle march\animation_test.cs" />
      <Compile Include="Assets\GrabBalls.cs" />
      <Compile Include="Assets\HealBall.cs" />
@@ -102,7 +103,6 @@
      <Compile Include="Assets\Refrence assets\SpeechRecognitionDemo\Scripts\GameControlScript.cs" />
      <Compile Include="Assets\Refrence assets\SpeechRecognitionDemo\Scripts\ThirdPersonCamera.cs" />
      <Compile Include="Assets\Score.cs" />
-     <Compile Include="Assets\SimonSaysFinal.cs" />
      <Compile Include="Assets\dreamlo\LeaderBoardSample.cs" />
      <Compile Include="Assets\dreamlo\dreamloLeaderBoard.cs" />
      <Compile Include="Assets\dreamlo\dreamloPromoCode.cs" />

@@ -12,9 +12,6 @@ public class RunningPresentationScript : MonoBehaviour
 
     public float turnSpeed = 50f;
 	public float runSpeed = 4.5f;
-
-	bool stoppedRunning = false;
-	bool startedRunning = false;
 	
 	void Start() 
 	{
@@ -33,24 +30,17 @@ public class RunningPresentationScript : MonoBehaviour
     void Update()
     {
         if (KinectGestures.running) {//listener.IsRunning())
-			if(!startedRunning){
-				startedRunning = true;
-				//player.GetComponent<CharacterMotor> ().movement.velocity += runSpeed * transform.forward;
-			}
 			timer.Interval = 250;
 			timer.Enabled = true;
-			stoppedRunning = false;
 
-		} else {
-			if(!stoppedRunning){
-				//player.GetComponent<CharacterMotor> ().movement.velocity -= runSpeed * transform.forward;
-			}
-			stoppedRunning = true;
-			startedRunning = false;
+		}
+		if (KinectGestures.hurdling) {
+
 		}
         if (timer.Enabled)// && !player.collider.)
         {
 			CharacterMotor m = player.GetComponent<CharacterMotor>();
+			//if(m.grounded)
 			m.inputMoveDirection = transform.forward;
 
 
