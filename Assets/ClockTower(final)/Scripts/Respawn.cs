@@ -15,9 +15,11 @@ public class Respawn : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		sp = SpawnPoint.position;
-		cp1 = CheckPoint1.position;
-		cp2 = CheckPoint2.position;
+		sp = new Vector3(SpawnPoint.position.x,SpawnPoint.position.y + 2,SpawnPoint.position.z);
+		cp1 = new Vector3(CheckPoint1.position.x,CheckPoint1.position.y + 2,CheckPoint1.position.z);
+		cp2 = new Vector3(CheckPoint2.position.x,CheckPoint2.position.y + 2,CheckPoint2.position.z);
+
+		player.transform.position = sp;
 	}
 	
 	// Update is called once per frame
