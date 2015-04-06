@@ -39,10 +39,10 @@
 	<Reference Include="System.Core" />
 	<Reference Include="System.Xml.Linq" />
 	<Reference Include="UnityEngine">
-	  <HintPath>C:/Users/zillion/Desktop/UnityFile/Editor/Data/Managed/UnityEngine.dll</HintPath>
+	  <HintPath>C:/Program Files (x86)/Unity/Editor/Data/Managed/UnityEngine.dll</HintPath>
 	</Reference>
 	<Reference Include="UnityEditor">
-	  <HintPath>C:/Users/zillion/Desktop/UnityFile/Editor/Data/Managed/UnityEditor.dll</HintPath>
+	  <HintPath>C:/Program Files (x86)/Unity/Editor/Data/Managed/UnityEditor.dll</HintPath>
 	</Reference>
   </ItemGroup>
   <ItemGroup>
@@ -60,6 +60,7 @@
      <Compile Include="Assets\Final\Breakout\Scripts\GuiWindowScript.cs" />
      <Compile Include="Assets\Final\Breakout\Scripts\SaveHighScore.cs" />
      <Compile Include="Assets\Final\Breakout\Scripts\ScoreBoard.cs" />
+     <Compile Include="Assets\Final\Breakout\Scripts\ScoreBoerd.cs" />
      <Compile Include="Assets\Final\Breakout\Scripts\ScoreGUI.cs" />
      <Compile Include="Assets\Final\Breakout\Scripts\Spawner.cs" />
      <Compile Include="Assets\Final\Breakout\Scripts\SphereSmarts.cs" />
@@ -67,7 +68,9 @@
      <Compile Include="Assets\Final\Muscle March\scripts\MuscleGestureListener.cs" />
      <Compile Include="Assets\Final\Simon Says\Scripts\GestureListener.cs" />
      <Compile Include="Assets\Final\Simon Says\Scripts\PresentationScript.cs" />
+     <Compile Include="Assets\Final\Simon Says\Scripts\SimonSays.cs" />
      <Compile Include="Assets\Final\Simon Says\Scripts\SimonSaysFinal.cs" />
+     <Compile Include="Assets\Final\Simon Says\Scripts\SimonSaysListener.cs" />
      <Compile Include="Assets\GrabBalls.cs" />
      <Compile Include="Assets\HealBall.cs" />
      <Compile Include="Assets\Huge Mocap Library\demo\scripts\demo.cs" />
@@ -97,6 +100,7 @@
      <Compile Include="Assets\Refrence assets\KinectScripts\SpeechErrorHandler.cs" />
      <Compile Include="Assets\Refrence assets\KinectScripts\SpeechManager.cs" />
      <Compile Include="Assets\Refrence assets\OverlayDemo\Scripts\KinectOverlayer.cs" />
+     <Compile Include="Assets\Refrence assets\RunningDemo\SampleAgentScript.cs" />
      <Compile Include="Assets\Refrence assets\RunningDemo\Scripts\CharacterMotor.cs" />
      <Compile Include="Assets\Refrence assets\RunningDemo\Scripts\Class1.cs" />
      <Compile Include="Assets\Refrence assets\RunningDemo\Scripts\FPSInputController.cs" />
@@ -108,11 +112,6 @@
      <Compile Include="Assets\Refrence assets\SpeechRecognitionDemo\Scripts\GameControlScript.cs" />
      <Compile Include="Assets\Refrence assets\SpeechRecognitionDemo\Scripts\ThirdPersonCamera.cs" />
      <Compile Include="Assets\Score.cs" />
-     <Compile Include="Assets\Scripts\Grid.cs" />
-     <Compile Include="Assets\Scripts\MouseLookCamera.cs" />
-     <Compile Include="Assets\Scripts\New.cs" />
-     <Compile Include="Assets\Scripts\Node.cs" />
-     <Compile Include="Assets\Scripts\PathFinding.cs" />
      <Compile Include="Assets\The.cs" />
      <Compile Include="Assets\ThirdPerson.cs" />
      <Compile Include="Assets\Transition.cs" />
@@ -126,7 +125,6 @@
      <Compile Include="Assets\maincharacter\animation_play.cs" />
      <Compile Include="Assets\moveScript01.cs" />
      <Compile Include="Assets\playsound.cs" />
-     <Compile Include="Assets\prefab\animationtest.cs" />
      <None Include="Assets\Standard Assets\Projectors\Guidelines.txt" />
      <None Include="Assets\Standard Assets (Mobile)\Shaders\Particle Shaders\Mobile Multiply Culled.shader" />
      <None Include="Assets\Standard Assets (Mobile)\Shaders\Miscellaneous Shaders\Mobile Background.shader" />
@@ -151,12 +149,14 @@
      <None Include="Assets\Standard Assets\Water (Pro Only)\Water4\Sources\Shaders\WaterInclude.cginc" />
      <None Include="Assets\Standard Assets\Water (Pro Only)\Water4\Sources\Shaders\FX-Water4.shader" />
  <Reference Include="ICSharpCode.SharpZipLib">
- <HintPath>C:/Users/zillion/Source/Repos/cpicapstone/Assets/Refrence assets/KinectScripts/SharpZipLib/ICSharpCode.SharpZipLib.dll</HintPath>
+ <HintPath>C:/Users/Mark Karlsrud/Source/Repos/cpicapstone/Assets/Refrence assets/KinectScripts/SharpZipLib/ICSharpCode.SharpZipLib.dll</HintPath>
  </Reference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="Assembly-CSharp-firstpass.csproj">
       <Project>{7CDA1BA4-C841-A570-4881-2782474777AA}</Project>      <Name>Assembly-CSharp-firstpass</Name>    </ProjectReference>
+    <ProjectReference Include="Assembly-UnityScript-firstpass.unityproj">
+      <Project>{D2C84DBE-50E3-4FDF-489A-C96640220560}</Project>      <Name>Assembly-UnityScript-firstpass</Name>    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
