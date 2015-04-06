@@ -108,11 +108,6 @@
      <Compile Include="Assets\Refrence assets\SpeechRecognitionDemo\Scripts\GameControlScript.cs" />
      <Compile Include="Assets\Refrence assets\SpeechRecognitionDemo\Scripts\ThirdPersonCamera.cs" />
      <Compile Include="Assets\Score.cs" />
-     <Compile Include="Assets\Scripts\Grid.cs" />
-     <Compile Include="Assets\Scripts\MouseLookCamera.cs" />
-     <Compile Include="Assets\Scripts\New.cs" />
-     <Compile Include="Assets\Scripts\Node.cs" />
-     <Compile Include="Assets\Scripts\PathFinding.cs" />
      <Compile Include="Assets\The.cs" />
      <Compile Include="Assets\ThirdPerson.cs" />
      <Compile Include="Assets\Transition.cs" />
@@ -150,6 +145,9 @@
      <None Include="Assets\Standard Assets (Mobile)\Shaders\Lightmap Shaders (Legacy)\Mobile Lightmap AlphaTest.shader" />
      <None Include="Assets\Standard Assets\Water (Pro Only)\Water4\Sources\Shaders\WaterInclude.cginc" />
      <None Include="Assets\Standard Assets\Water (Pro Only)\Water4\Sources\Shaders\FX-Water4.shader" />
+ <Reference Include="Assembly-UnityScript-firstpass">
+ <HintPath>C:/Users/zillion/Source/Repos/cpicapstone/Library/ScriptAssemblies/Assembly-UnityScript-firstpass.dll</HintPath>
+ </Reference>
  <Reference Include="ICSharpCode.SharpZipLib">
  <HintPath>C:/Users/zillion/Source/Repos/cpicapstone/Assets/Refrence assets/KinectScripts/SharpZipLib/ICSharpCode.SharpZipLib.dll</HintPath>
  </Reference>

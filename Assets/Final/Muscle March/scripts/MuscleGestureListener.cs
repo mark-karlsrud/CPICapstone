@@ -8,7 +8,7 @@ public class MuscleGestureListener : MonoBehaviour, KinectGestures.GestureListen
 	// GUI Text to display the gesture messages.
 	public GUIText GestureInfo;
 
-	public static bool tpose;
+	public static bool tpose,rightBicepFlex,leftBicepFlex;
 	
 	
 	public bool IsTPose()
@@ -20,7 +20,27 @@ public class MuscleGestureListener : MonoBehaviour, KinectGestures.GestureListen
 		}
 		
 		return false;
-	}	
+	}
+    public bool RightBicepFlex()
+    {
+        if (rightBicepFlex)
+        {
+            rightBicepFlex = false;
+            return true;
+        }
+
+        return false;
+    }
+    public bool LeftBicepFlex()
+    {
+        if (leftBicepFlex)
+        {
+            leftBicepFlex = false;
+            return true;
+        }
+
+        return false;
+    }
 	
 	public void UserDetected(long userId, int userIndex)
 	{
@@ -68,6 +88,14 @@ public class MuscleGestureListener : MonoBehaviour, KinectGestures.GestureListen
 		if (gesture == KinectGestures.Gestures.Tpose) {
 			tpose = true;
 		}
+        else if (gesture == KinectGestures.Gestures.RightBicepFlex)
+        {
+            rightBicepFlex = true;
+        }
+        else if (gesture == KinectGestures.Gestures.LeftBicepFlex)
+        {
+            leftBicepFlex = true;
+        }
 		
 		return true;
 	}

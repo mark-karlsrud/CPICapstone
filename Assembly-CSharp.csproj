@@ -108,11 +108,6 @@
      <Compile Include="Assets\Refrence assets\SpeechRecognitionDemo\Scripts\GameControlScript.cs" />
      <Compile Include="Assets\Refrence assets\SpeechRecognitionDemo\Scripts\ThirdPersonCamera.cs" />
      <Compile Include="Assets\Score.cs" />
-     <Compile Include="Assets\Scripts\Grid.cs" />
-     <Compile Include="Assets\Scripts\MouseLookCamera.cs" />
-     <Compile Include="Assets\Scripts\New.cs" />
-     <Compile Include="Assets\Scripts\Node.cs" />
-     <Compile Include="Assets\Scripts\PathFinding.cs" />
      <Compile Include="Assets\The.cs" />
      <Compile Include="Assets\ThirdPerson.cs" />
      <Compile Include="Assets\Transition.cs" />
@@ -157,6 +152,8 @@
   <ItemGroup>
     <ProjectReference Include="Assembly-CSharp-firstpass.csproj">
       <Project>{7CDA1BA4-C841-A570-4881-2782474777AA}</Project>      <Name>Assembly-CSharp-firstpass</Name>    </ProjectReference>
+    <ProjectReference Include="Assembly-UnityScript-firstpass.unityproj">
+      <Project>{D2C84DBE-50E3-4FDF-489A-C96640220560}</Project>      <Name>Assembly-UnityScript-firstpass</Name>    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

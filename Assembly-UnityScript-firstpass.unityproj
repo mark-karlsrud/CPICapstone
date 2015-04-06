@@ -46,12 +46,13 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Standard Assets\Character Controllers\Sources\Scripts\CharacterMotor.js" />
      <Compile Include="Assets\Standard Assets\Character Controllers\Sources\Scripts\js\CharacterMotor.js" />
      <Compile Include="Assets\Standard Assets\Character Controllers\Sources\Scripts\js\FPSInputController.js" />
      <Compile Include="Assets\Standard Assets\Character Controllers\Sources\Scripts\js\PlatformInputController.js" />
      <Compile Include="Assets\Standard Assets\Character Controllers\Sources\Scripts\js\ThirdPersonCamera.js" />
      <Compile Include="Assets\Standard Assets\Character Controllers\Sources\Scripts\js\ThirdPersonController.js" />
+     <Compile Include="Assets\Standard Assets\Character Controllers\Sources\Scripts\js\VariableManager.js" />
+     <Compile Include="Assets\Standard Assets\Character Controllers\Sources\Scripts\x.js" />
      <Compile Include="Assets\Standard Assets\Particles\Legacy Particles\TimedObjectDestructor.js" />
      <Compile Include="Assets\Standard Assets\Scripts\Camera Scripts\MouseOrbit.js" />
      <Compile Include="Assets\Standard Assets\Scripts\Camera Scripts\SmoothFollow.js" />
