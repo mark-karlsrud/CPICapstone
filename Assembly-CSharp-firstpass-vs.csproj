@@ -47,11 +47,13 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Standard Assets\CameraIntrinsics.cs" />
+     <Compile Include="Assets\Standard Assets\Character Controllers\MoveForeware.cs" />
      <Compile Include="Assets\Standard Assets\Character Controllers\Sources\Scripts\CharacterMotor.cs" />
      <Compile Include="Assets\Standard Assets\Character Controllers\Sources\Scripts\FPSInputController.cs" />
      <Compile Include="Assets\Standard Assets\Character Controllers\Sources\Scripts\MouseLook.cs" />
      <Compile Include="Assets\Standard Assets\Character Controllers\Sources\Scripts\MouseLookCamera.cs" />
      <Compile Include="Assets\Standard Assets\Character Controllers\Sources\Scripts\PlatformInputController.cs" />
+     <Compile Include="Assets\Standard Assets\Character Controllers\Sources\Scripts\Rotateme.cs" />
      <Compile Include="Assets\Standard Assets\CollectionMap.cs" />
      <Compile Include="Assets\Standard Assets\EventPump.cs" />
      <Compile Include="Assets\Standard Assets\ExceptionHelper.cs" />
@@ -91,8 +93,18 @@
      <Compile Include="Assets\Standard Assets\Microsoft\Kinect\Face\TrackingIdLostEventArgs.cs" />
      <Compile Include="Assets\Standard Assets\NativeObjectCache.cs" />
      <Compile Include="Assets\Standard Assets\NativeWrapper.cs" />
+     <Compile Include="Assets\Standard Assets\Scripts\CollorChanger.cs" />
+     <Compile Include="Assets\Standard Assets\Scripts\General Scripts\ActivateTrigger.cs" />
      <Compile Include="Assets\Standard Assets\SmartGCHandle.cs" />
      <Compile Include="Assets\Standard Assets\ThreadSafeDictionary.cs" />
+     <Compile Include="Assets\Standard Assets\Water (Pro Only)\Sources\Scripts\Water.cs" />
+     <Compile Include="Assets\Standard Assets\Water (Pro Only)\Water4\Sources\Scripts\Displace.cs" />
+     <Compile Include="Assets\Standard Assets\Water (Pro Only)\Water4\Sources\Scripts\GerstnerDisplace.cs" />
+     <Compile Include="Assets\Standard Assets\Water (Pro Only)\Water4\Sources\Scripts\MeshContainer.cs" />
+     <Compile Include="Assets\Standard Assets\Water (Pro Only)\Water4\Sources\Scripts\PlanarReflection.cs" />
+     <Compile Include="Assets\Standard Assets\Water (Pro Only)\Water4\Sources\Scripts\SpecularLighting.cs" />
+     <Compile Include="Assets\Standard Assets\Water (Pro Only)\Water4\Sources\Scripts\WaterBase.cs" />
+     <Compile Include="Assets\Standard Assets\Water (Pro Only)\Water4\Sources\Scripts\WaterTile.cs" />
      <Compile Include="Assets\Standard Assets\Windows\Data\PropertyChangedEventArgs.cs" />
      <Compile Include="Assets\Standard Assets\Windows\Kinect\Activity.cs" />
      <Compile Include="Assets\Standard Assets\Windows\Kinect\Appearance.cs" />
@@ -167,12 +179,29 @@
      <Compile Include="Assets\Standard Assets\Windows\Kinect\TrackingConfidence.cs" />
      <Compile Include="Assets\Standard Assets\Windows\Kinect\TrackingState.cs" />
      <Compile Include="Assets\Standard Assets\Windows\Kinect\Vector4.cs" />
+     <None Include="Assets\Standard Assets\Projectors\Guidelines.txt" />
+     <None Include="Assets\Standard Assets (Mobile)\Shaders\Particle Shaders\Mobile Multiply Culled.shader" />
+     <None Include="Assets\Standard Assets (Mobile)\Shaders\Miscellaneous Shaders\Mobile Background.shader" />
      <None Include="Assets\dreamlo\README_FIRST.txt" />
+     <None Include="Assets\Standard Assets\Projectors\Sources\Shaders\Projector Multiply.shader" />
+     <None Include="Assets\Standard Assets (Mobile)\Shaders\Vertex Colored Shaders\Mobile Transparent Vertex Color.shader" />
+     <None Include="Assets\Standard Assets\Materials\Normal-Diffuse2.shader" />
      <None Include="Assets\Resources\SpeechGrammar.grxml.txt" />
+     <None Include="Assets\Standard Assets (Mobile)\Shaders\Miscellaneous Shaders\Mobile Detail.shader" />
      <None Include="Assets\Standard Assets\Particles\Sources\Shaders\Particle Alpha Blend (Queue +100).shader" />
+     <None Include="Assets\Standard Assets\Water (Pro Only)\Water4\Sources\Shaders\FX-SimpleWater4.shader" />
      <None Include="Assets\Standard Assets\Skyboxes\_skybox info.txt" />
      <None Include="Assets\Refrence assets\InteractionDemo\MOVED FILES.txt" />
      <None Include="Assets\Refrence assets\GesturesDemo\MOVED FILES.txt" />
+     <None Include="Assets\Standard Assets\Projectors\Sources\Shaders\Projector Light.shader" />
+     <None Include="Assets\Standard Assets (Mobile)\Shaders\Lightmap Shaders (Legacy)\Mobile Lightmap Reflective.shader" />
+     <None Include="Assets\Standard Assets (Mobile)\Shaders\Particle Shaders\Mobile Particles Additive Culled.shader" />
+     <None Include="Assets\Standard Assets\Water (Pro Only)\Sources\Shaders\FX-Water.shader" />
+     <None Include="Assets\Standard Assets (Mobile)\Shaders\Vertex Colored Shaders\Mobile Vertex Colored.shader" />
+     <None Include="Assets\Standard Assets (Mobile)\Shaders\Lightmap Shaders (Legacy)\Mobile Lightmap Only.shader" />
+     <None Include="Assets\Standard Assets (Mobile)\Shaders\Lightmap Shaders (Legacy)\Mobile Lightmap AlphaTest.shader" />
+     <None Include="Assets\Standard Assets\Water (Pro Only)\Water4\Sources\Shaders\WaterInclude.cginc" />
+     <None Include="Assets\Standard Assets\Water (Pro Only)\Water4\Sources\Shaders\FX-Water4.shader" />
  <Reference Include="ICSharpCode.SharpZipLib">
  <HintPath>C:/Users/zillion/Source/Repos/cpicapstone/Assets/Refrence assets/KinectScripts/SharpZipLib/ICSharpCode.SharpZipLib.dll</HintPath>
  </Reference>

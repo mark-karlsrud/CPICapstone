@@ -259,7 +259,7 @@ public class KinectGestures
         if (ground == 0f)
         {
             ground = jointsPos[rightFootIndex].y;
-            Debug.Log("ground:" + ground);
+            //Debug.Log("ground:" + ground);
         }
 
 

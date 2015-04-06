@@ -71,7 +71,7 @@ public class EndSceaneGUI : MonoBehaviour {
 		if(Controller.theScore > Controller.highscore[9])
 			Controller.name = GUI.TextField(new Rect(50, 50, 200, 90), Controller.name,
 			                              
-			                                3);
+			                      3);
 		GUI.skin = yourscore;
 		GUI.Label(new Rect(0, 0, 300, 50), "\t\tYour score: "+Controller.theScore);
 		GUI.EndGroup();

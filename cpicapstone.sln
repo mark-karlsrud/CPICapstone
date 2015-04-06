@@ -9,6 +9,8 @@ Project("{42BE48C8-66AD-B9E5-72AF-5501EA99D878}") = "cpicapstone", "Assembly-CSh
 EndProject
 Project("{42BE48C8-66AD-B9E5-72AF-5501EA99D878}") = "cpicapstone", "Assembly-UnityScript-firstpass.unityproj", "{D2C84DBE-50E3-4FDF-489A-C96640220560}"
 EndProject
+Project("{42BE48C8-66AD-B9E5-72AF-5501EA99D878}") = "cpicapstone", "Assembly-UnityScript.unityproj", "{2E5E3066-8102-6A21-4452-51763266E00E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -31,11 +33,15 @@ Global
 		{D2C84DBE-50E3-4FDF-489A-C96640220560}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D2C84DBE-50E3-4FDF-489A-C96640220560}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D2C84DBE-50E3-4FDF-489A-C96640220560}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2E5E3066-8102-6A21-4452-51763266E00E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2E5E3066-8102-6A21-4452-51763266E00E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2E5E3066-8102-6A21-4452-51763266E00E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2E5E3066-8102-6A21-4452-51763266E00E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
-																																																																																																																																																							GlobalSection(MonoDevelopProperties) = preSolution
+																																																																																																																																																																																GlobalSection(MonoDevelopProperties) = preSolution
 		StartupItem = Assembly-CSharp.csproj
 		Policies = $0
 		$0.TextStylePolicy = $3

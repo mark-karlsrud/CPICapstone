@@ -1075,7 +1075,7 @@ public class KinectManager : MonoBehaviour
 			// init the available sensor interfaces
 			bool bNeedRestart = false;
 			sensorInterfaces = KinectInterop.InitSensorInterfaces(ref bNeedRestart);
-			
+
 			if(bNeedRestart)
 			{
 				KinectInterop.RestartLevel(gameObject, "KM");

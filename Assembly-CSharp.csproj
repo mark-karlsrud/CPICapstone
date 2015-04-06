@@ -47,6 +47,10 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\BlueBall.cs" />
+     <Compile Include="Assets\ClockTower(final)\Scripts\CheckPoint.cs" />
+     <Compile Include="Assets\ClockTower(final)\Scripts\PlayerScript.cs" />
+     <Compile Include="Assets\ClockTower(final)\Scripts\Respawn.cs" />
+     <Compile Include="Assets\ClockTower(final)\Scripts\SwitchScenes.cs" />
      <Compile Include="Assets\Final\Breakout\Scripts\ChangeScene.cs" />
      <Compile Include="Assets\Final\Breakout\Scripts\ColliderDestroy.cs" />
      <Compile Include="Assets\Final\Breakout\Scripts\Controller.cs" />
@@ -59,10 +63,11 @@
      <Compile Include="Assets\Final\Breakout\Scripts\ScoreGUI.cs" />
      <Compile Include="Assets\Final\Breakout\Scripts\Spawner.cs" />
      <Compile Include="Assets\Final\Breakout\Scripts\SphereSmarts.cs" />
+     <Compile Include="Assets\Final\Muscle March\scripts\CopyPose.cs" />
+     <Compile Include="Assets\Final\Muscle March\scripts\MuscleGestureListener.cs" />
      <Compile Include="Assets\Final\Simon Says\Scripts\GestureListener.cs" />
      <Compile Include="Assets\Final\Simon Says\Scripts\PresentationScript.cs" />
      <Compile Include="Assets\Final\Simon Says\Scripts\SimonSaysFinal.cs" />
-     <Compile Include="Assets\Final\Simon Says\muscle march\animation_test.cs" />
      <Compile Include="Assets\GrabBalls.cs" />
      <Compile Include="Assets\HealBall.cs" />
      <Compile Include="Assets\Huge Mocap Library\demo\scripts\demo.cs" />
@@ -103,6 +108,15 @@
      <Compile Include="Assets\Refrence assets\SpeechRecognitionDemo\Scripts\GameControlScript.cs" />
      <Compile Include="Assets\Refrence assets\SpeechRecognitionDemo\Scripts\ThirdPersonCamera.cs" />
      <Compile Include="Assets\Score.cs" />
+     <Compile Include="Assets\Scripts\Grid.cs" />
+     <Compile Include="Assets\Scripts\MouseLookCamera.cs" />
+     <Compile Include="Assets\Scripts\New.cs" />
+     <Compile Include="Assets\Scripts\Node.cs" />
+     <Compile Include="Assets\Scripts\PathFinding.cs" />
+     <Compile Include="Assets\The.cs" />
+     <Compile Include="Assets\ThirdPerson.cs" />
+     <Compile Include="Assets\Transition.cs" />
+     <Compile Include="Assets\Trigger.cs" />
      <Compile Include="Assets\dreamlo\LeaderBoardSample.cs" />
      <Compile Include="Assets\dreamlo\dreamloLeaderBoard.cs" />
      <Compile Include="Assets\dreamlo\dreamloPromoCode.cs" />
@@ -113,12 +127,29 @@
      <Compile Include="Assets\moveScript01.cs" />
      <Compile Include="Assets\playsound.cs" />
      <Compile Include="Assets\prefab\animationtest.cs" />
+     <None Include="Assets\Standard Assets\Projectors\Guidelines.txt" />
+     <None Include="Assets\Standard Assets (Mobile)\Shaders\Particle Shaders\Mobile Multiply Culled.shader" />
+     <None Include="Assets\Standard Assets (Mobile)\Shaders\Miscellaneous Shaders\Mobile Background.shader" />
      <None Include="Assets\dreamlo\README_FIRST.txt" />
+     <None Include="Assets\Standard Assets\Projectors\Sources\Shaders\Projector Multiply.shader" />
+     <None Include="Assets\Standard Assets (Mobile)\Shaders\Vertex Colored Shaders\Mobile Transparent Vertex Color.shader" />
+     <None Include="Assets\Standard Assets\Materials\Normal-Diffuse2.shader" />
      <None Include="Assets\Resources\SpeechGrammar.grxml.txt" />
+     <None Include="Assets\Standard Assets (Mobile)\Shaders\Miscellaneous Shaders\Mobile Detail.shader" />
      <None Include="Assets\Standard Assets\Particles\Sources\Shaders\Particle Alpha Blend (Queue +100).shader" />
+     <None Include="Assets\Standard Assets\Water (Pro Only)\Water4\Sources\Shaders\FX-SimpleWater4.shader" />
      <None Include="Assets\Standard Assets\Skyboxes\_skybox info.txt" />
      <None Include="Assets\Refrence assets\InteractionDemo\MOVED FILES.txt" />
      <None Include="Assets\Refrence assets\GesturesDemo\MOVED FILES.txt" />
+     <None Include="Assets\Standard Assets\Projectors\Sources\Shaders\Projector Light.shader" />
+     <None Include="Assets\Standard Assets (Mobile)\Shaders\Lightmap Shaders (Legacy)\Mobile Lightmap Reflective.shader" />
+     <None Include="Assets\Standard Assets (Mobile)\Shaders\Particle Shaders\Mobile Particles Additive Culled.shader" />
+     <None Include="Assets\Standard Assets\Water (Pro Only)\Sources\Shaders\FX-Water.shader" />
+     <None Include="Assets\Standard Assets (Mobile)\Shaders\Vertex Colored Shaders\Mobile Vertex Colored.shader" />
+     <None Include="Assets\Standard Assets (Mobile)\Shaders\Lightmap Shaders (Legacy)\Mobile Lightmap Only.shader" />
+     <None Include="Assets\Standard Assets (Mobile)\Shaders\Lightmap Shaders (Legacy)\Mobile Lightmap AlphaTest.shader" />
+     <None Include="Assets\Standard Assets\Water (Pro Only)\Water4\Sources\Shaders\WaterInclude.cginc" />
+     <None Include="Assets\Standard Assets\Water (Pro Only)\Water4\Sources\Shaders\FX-Water4.shader" />
  <Reference Include="ICSharpCode.SharpZipLib">
  <HintPath>C:/Users/zillion/Source/Repos/cpicapstone/Assets/Refrence assets/KinectScripts/SharpZipLib/ICSharpCode.SharpZipLib.dll</HintPath>
  </Reference>
@@ -126,8 +157,6 @@
   <ItemGroup>
     <ProjectReference Include="Assembly-CSharp-firstpass.csproj">
       <Project>{7CDA1BA4-C841-A570-4881-2782474777AA}</Project>      <Name>Assembly-CSharp-firstpass</Name>    </ProjectReference>
-    <ProjectReference Include="Assembly-UnityScript-firstpass.unityproj">
-      <Project>{D2C84DBE-50E3-4FDF-489A-C96640220560}</Project>      <Name>Assembly-UnityScript-firstpass</Name>    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

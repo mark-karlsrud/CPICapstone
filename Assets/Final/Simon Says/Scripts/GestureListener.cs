@@ -113,6 +113,9 @@ public class GestureListener : MonoBehaviour, KinectGestures.GestureListenerInte
 			swipeUp = true;
 		else if(gesture == KinectGestures.Gestures.SwipeDown)
 			swipeDown = true;
+		else if (gesture == KinectGestures.Gestures.Tpose) {
+			Debug.Log ("set tpose to true");
+		}
 		
 		return true;
 	}

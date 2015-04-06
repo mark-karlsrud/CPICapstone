@@ -7,99 +7,164 @@ public class animation_play : MonoBehaviour {
 
 	//movement hashes
 	int jumpHash = Animator.StringToHash("Jump");
-	int movingHash = Animator.StringToHash("Moving");
+	int runForwardHash = Animator.StringToHash("Run Forwards");
+	int runBackwardHash = Animator.StringToHash("Run Backwards");
+	int sideStepRightHash = Animator.StringToHash("Side Step Right");
+	int sideStepLefttHash = Animator.StringToHash("Side Step Left");
+
+	//interact hashes
+	int buttonPressHash = Animator.StringToHash("Button Press");
+	int pickupHash = Animator.StringToHash("Pickup");
 
 	//attack hashes
-	int meleeHash = Animator.StringToHash("Melee");
-	int leftPunchHash = Animator.StringToHash("Punch Left");
-	int rightPunchHash = Animator.StringToHash("Punch Right");
-	int aimHash = Animator.StringToHash("Aim");
+	int punchinHash = Animator.StringToHash("Punchin");
+	int leftPunchHash = Animator.StringToHash("Left Punch");
+	int rightPunchHash = Animator.StringToHash("Right Punch");
+	int shootinHash = Animator.StringToHash("Shootin");
 	int firingHash = Animator.StringToHash("Firing");
 
 	//attack vaiables
-	bool isMelee;
-	bool isAttackEnd;
-	bool isAim;
+	bool isPunchin;
+	bool isShootin;
 
 	// Use this for initialization
 	void Start () {
 		animator = GetComponent<Animator>();
-		isMelee = false;
-		isAttackEnd = false;
-		isAim = false;
+		isPunchin = false;
+		isShootin = false;
 	}
 	
 	// Update is called once per frame
 	void Update () {
 
-		if (Input.GetAxis ("Vertical") != 0) 
+		animator.SetBool (runForwardHash, Input.GetKey(KeyCode.W));
+		animator.SetBool (runBackwardHash, Input.GetKey(KeyCode.S));
+		animator.SetBool (sideStepRightHash, Input.GetKey(KeyCode.D));
+		animator.SetBool (sideStepLefttHash, Input.GetKey(KeyCode.A));
+
+		if (Input.GetKeyDown (KeyCode.Q)) 
 		{
-			animator.SetBool (movingHash, true);
-		} 
-		else 
-		{
-			animator.SetBool (movingHash, false);
+			//doesn't block punch animations when pushing just so you know :/
+			if(!animator.GetCurrentAnimatorStateInfo(2).IsName("button press"))
+			{
+				animator.SetTrigger(buttonPressHash);
+			}
 		}
 
+		if (Input.GetKeyDown (KeyCode.E)) 
+		{
+			//does block every other animation
+			if(!animator.GetCurrentAnimatorStateInfo(3).IsName("pickup"))
+			{
+				animator.SetTrigger(pickupHash);
+			}
+		}
 
 		if (Input.GetAxis ("Jump") != 0) 
 		{
+		
+		if(!(animator.GetCurrentAnimatorStateInfo(0).IsName("Jump Left") ||
+		   animator.GetCurrentAnimatorStateInfo(0).IsName("Jump Right")))
+			{
 				animator.SetTrigger(jumpHash);
-				isMelee = false;
-				animator.SetBool (meleeHash, isMelee);
-				isAim = false;		
-				animator.SetBool (aimHash, isAim);
+
+				//****doesn't reactivate******//
+				//deactivates punching when jumping
+				isPunchin = false;
+				punchState();
+
+				//deactuvates shooting
+				isShootin = false;
+				shootState();
+			}
 		}
 
 		if (Input.GetKeyDown (KeyCode.Keypad1)) 
 		{
-			isMelee = !isMelee;		
-			animator.SetBool (meleeHash, isMelee);
+			//deactivates shootings
+			isShootin = false;
+			shootState();
+			
+			isPunchin = !isPunchin;
+			animator.SetBool (punchinHash, isPunchin);
+
 		}
 
 		if (Input.GetKeyDown (KeyCode.Keypad2)) 
 		{
-			isAim = !isAim;		
-			animator.SetBool (aimHash, isAim);
+			//deactivates punching
+			isPunchin = false;
+			punchState();
+			
+			isShootin = !isShootin;	
+			animator.SetBool (shootinHash, isShootin);
 		}
 
 		if (Input.GetAxis ("Fire1") != 0) 
 		{
-			if(isMelee)
+			if(isPunchin)
 			{
-				animator.SetTrigger(leftPunchHash);
+				animator.SetBool(leftPunchHash, true);
 			}
-			else if(isAim)
+			else if(isShootin)
 			{
 				animator.SetBool(firingHash, true);
 			}
 		}
 		else
 		{
+			animator.SetBool(leftPunchHash, false);
 			animator.SetBool(firingHash, false);
 		}
 
+
 		if (Input.GetAxis ("Fire2") != 0) 
 		{
-			if(isMelee)
+			if (isPunchin) 
 			{
-				animator.SetTrigger(rightPunchHash);
+				animator.SetBool (rightPunchHash, true);
 			}
+		} 
+		else 
+		{
+			animator.SetBool (rightPunchHash, false);
 		}
 
-		if (isMelee || isAim) 
+
+		if (!isPunchin) 
 		{
-			animator.SetLayerWeight (1, 1);
+			animator.SetBool (leftPunchHash, false);
+			animator.SetBool (rightPunchHash, false);
 		}
-		else if (animator.GetCurrentAnimatorStateInfo(1).IsName("attack.punch start") ||
-		         animator.GetCurrentAnimatorStateInfo(1).IsName("attack.shoot start"))
+
+		if (!isShootin) 
 		{
-			isAttackEnd = true;
+			animator.SetBool(firingHash, false);
 		}
-		else if (isAttackEnd) 
+	}
+
+	void punchState()
+	{
+		//deactivates or activates the punching animations
+		if (!isPunchin) 
 		{
-			isAttackEnd = false;
-			animator.SetLayerWeight(1,0);
+			animator.SetBool (leftPunchHash, false);
+			animator.SetBool (rightPunchHash, false);
+			animator.SetBool (punchinHash, isPunchin);
 		}
+		else
+			animator.SetBool (punchinHash, isPunchin);	
+	}
+
+	void shootState()
+	{
+		//deactivatess or activates the shooting animations
+		if (!isShootin) 
+		{
+			animator.SetBool (firingHash, false);	
+			animator.SetBool (shootinHash, isShootin);
+		}
+		else
+			animator.SetBool (shootinHash, isShootin);
 	}
 }
