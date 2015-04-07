@@ -62,7 +62,13 @@ public class KinectGestures
         Running,
         RightTurn,
         LeftTurn,
-        Hurdle
+        Hurdle,
+        RightBicepFlexDown,
+        LeftBicepFlexDown,
+        DoubleBicepFlexDown,
+        DoubleBicepFlex,
+        RightUpLeftDownFlex,
+        LeftUpRightDownFlex
 	}
 	
 	
@@ -88,6 +94,8 @@ public class KinectGestures
 
 	
 	// Gesture related constants, variables and functions
+    private const int headIndex = (int)KinectInterop.JointType.Head;
+
 	private const int leftHandIndex = (int)KinectInterop.JointType.HandLeft;
 	private const int rightHandIndex = (int)KinectInterop.JointType.HandRight;
 		
@@ -110,6 +118,10 @@ public class KinectGestures
 
     public static bool running, turnLeft, turnRight, jumping, hurdling;
     public static float ground = 0f;
+
+    private static float rightHandX, rightHandY, rightShoulderX, rightShoulderY, rightElbowX, rightElbowY = 0f;
+    private static float leftHandX, leftHandY, leftShoulderX, leftShoulderY, leftElbowX, leftElbowY = 0f;
+    private static float headX, headY = 0f;
 	
 	private static int[] neededJointIndexes = {
 		/*leftHandIndex, rightHandIndex, leftElbowIndex, rightElbowIndex, leftShoulderIndex, rightShoulderIndex,
@@ -261,6 +273,30 @@ public class KinectGestures
             ground = jointsPos[rightFootIndex].y;
             //Debug.Log("ground:" + ground);
         }
+        
+        if (jointsTracked[rightHandIndex] && jointsTracked[rightShoulderIndex] && jointsTracked[rightElbowIndex])
+        {
+            rightHandX = jointsPos[rightHandIndex].x;
+            rightHandY = jointsPos[rightHandIndex].y;
+            rightShoulderX = jointsPos[rightShoulderIndex].x;
+            rightShoulderY = jointsPos[rightShoulderIndex].y;
+            rightElbowX = jointsPos[rightElbowIndex].x;
+            rightElbowY = jointsPos[rightElbowIndex].y;
+        }
+        if (jointsTracked[leftHandIndex] && jointsTracked[leftShoulderIndex] && jointsTracked[leftElbowIndex])
+        {
+            leftHandX = jointsPos[leftHandIndex].x;
+            leftHandY = jointsPos[leftHandIndex].y;
+            leftShoulderX = jointsPos[leftShoulderIndex].x;
+            leftShoulderY = jointsPos[leftShoulderIndex].y;
+            leftElbowX = jointsPos[leftElbowIndex].x;
+            leftElbowY = jointsPos[leftElbowIndex].y;
+        }
+        if (jointsTracked[headIndex])
+        {
+            headX = jointsPos[headIndex].x;
+            headY = jointsPos[headIndex].y;
+        }
 
 
 		if(gestureData.complete)
@@ -323,41 +359,82 @@ public class KinectGestures
 				}
 				break;
 
+            case Gestures.RightBicepFlexDown:
+                switch (gestureData.state)
+                {
+                    case 0:  // gesture detection
+                        if (jointsTracked[rightHandIndex] && jointsTracked[rightShoulderIndex] && jointsTracked[rightElbowIndex] && jointsTracked[headIndex] &&
+                           rightHandY < rightShoulderY && //right hand must be below right shoulder
+                           rightElbowX > rightShoulderX && //right shoulder must be to the right of right elbow
+                           Math.Abs(rightElbowY - rightShoulderY) < 0.3f && //right elbow and right shoulder should be at roughly the same height
+                            rightHandY < rightElbowY) //right hand should be lower than elbow
+                        {
+                            SetGestureJoint(ref gestureData, timestamp, rightHandIndex, jointsPos[rightHandIndex]);
+                        }
+                        break;
 
+                    case 1:  // gesture complete
+                        bool isInPose = (jointsTracked[rightHandIndex] && jointsTracked[rightShoulderIndex] && jointsTracked[rightElbowIndex] && jointsTracked[headIndex] &&
+                           rightHandY < rightShoulderY && //right hand must be below right shoulder
+                           rightElbowX > rightShoulderX && //right shoulder must be to the right of right elbow
+                           Math.Abs(rightElbowY - rightShoulderY) < 0.3f && //right elbow and right shoulder should be at roughly the same height
+                            rightHandY < rightElbowY); //right hand should be lower than elbow
+
+                        Vector3 jointPos = jointsPos[gestureData.joint];
+                        CheckPoseComplete(ref gestureData, timestamp, jointPos, isInPose, KinectInterop.Constants.PoseCompleteDuration);
+                        break;
+                }
+                break;
+
+            case Gestures.LeftBicepFlexDown:
+                switch (gestureData.state)
+                {
+                    case 0:  // gesture detection
+                        if (jointsTracked[leftHandIndex] && jointsTracked[leftShoulderIndex] && jointsTracked[leftElbowIndex] && jointsTracked[headIndex] &&
+                           leftHandY < leftShoulderY && //left hand must be below left shoulder
+                           leftElbowX < leftShoulderX && //left shoulder must be to the left of left elbow
+                           Math.Abs(leftElbowY - leftShoulderY) < 0.3f && //left elbow and left shoulder should be at roughly the same height
+                            leftHandY < leftElbowY) //left hand should be lower than elbow
+                        {
+                            SetGestureJoint(ref gestureData, timestamp, leftHandIndex, jointsPos[leftHandIndex]);
+                        }
+                        break;
+
+                    case 1:  // gesture complete
+                        bool isInPose = (jointsTracked[leftHandIndex] && jointsTracked[leftShoulderIndex] && jointsTracked[leftElbowIndex] && jointsTracked[headIndex] &&
+                           leftHandY < leftShoulderY && //left hand must be below left shoulder
+                           leftElbowX < leftShoulderX && //left shoulder must be to the left of left elbow
+                           Math.Abs(leftElbowY - leftShoulderY) < 0.3f && //left elbow and left shoulder should be at roughly the same height
+                            leftHandY < leftElbowY); //left hand should be lower than elbow
+
+                        Vector3 jointPos = jointsPos[gestureData.joint];
+                        CheckPoseComplete(ref gestureData, timestamp, jointPos, isInPose, KinectInterop.Constants.PoseCompleteDuration);
+                        break;
+                }
+                break;
+                
 			case Gestures.RightBicepFlex:
-				float rightHandX = 0;
-				float rightHandY = 0;
-				float rightShoulderX = 0;
-				float rightShoulderY = 0;
-				float rightElbowX = 0;
-				float rightElbowY = 0;
-				if(jointsTracked[rightHandIndex] && jointsTracked[rightShoulderIndex] && jointsTracked[rightElbowIndex]){
-					rightHandX = jointsPos[rightHandIndex].x;
-					rightHandY = jointsPos[rightHandIndex].y;
-					rightShoulderX = jointsPos[rightShoulderIndex].x;
-					rightShoulderY = jointsPos[rightShoulderIndex].y;
-					rightElbowX = jointsPos[rightElbowIndex].x;
-					rightElbowY = jointsPos[rightElbowIndex].y;
-				}
 				switch(gestureData.state)
 				{
 					case 0:  // gesture detection
-						if(jointsTracked[rightHandIndex] && jointsTracked[rightShoulderIndex] && jointsTracked[rightElbowIndex] &&
-							rightHandY > rightShoulderY && //right hand must be above right shoulder
-				   			rightElbowX > rightShoulderX && //right shoulder must be to the left of right elbow
-				   			Math.Abs(rightElbowY - rightShoulderY) < 0.2f && //right elbow and right shoulder should be at roughly the same height
-							Math.Abs(rightHandX - rightShoulderX) < 0.1f)
+                        if (jointsTracked[rightHandIndex] && jointsTracked[rightShoulderIndex] && jointsTracked[rightElbowIndex] && jointsTracked[headIndex] &&
+                           rightHandY > rightShoulderY && //right hand must be above right shoulder
+                           rightElbowX > rightShoulderX && //right shoulder must be to the right of rright elbow
+                           Math.Abs(rightElbowY - rightShoulderY) < 0.2f && //right elbow and right shoulder should be at roughly the same height
+                            rightHandY > rightElbowY && //right hand should be higher than elbow
+                            Math.Abs(rightHandY - headY) < 0.04f) //right hand shouldn't he way higher than head
 						{
 							SetGestureJoint(ref gestureData, timestamp, rightHandIndex, jointsPos[rightHandIndex]);
 						}
 						break;
 							
 					case 1:  // gesture complete
-						bool isInPose = (jointsTracked[rightHandIndex] && jointsTracked[rightShoulderIndex] && jointsTracked[rightElbowIndex] &&
-						                 rightHandY > rightShoulderY && //right hand must be above right shoulder
-						                 rightElbowX > rightShoulderX && //right shoulder must be to the left of right elbow
-						                 Math.Abs(rightElbowY - rightShoulderY) < 0.2f && //right elbow and right shoulder should be at roughly the same height
-						                 Math.Abs(rightHandX - rightShoulderX) < 0.1f); //right hand and right shoulder should be close laterally
+						bool isInPose = (jointsTracked[rightHandIndex] && jointsTracked[rightShoulderIndex] && jointsTracked[rightElbowIndex] && jointsTracked[headIndex] &&
+                               rightHandY > rightShoulderY && //right hand must be above right shoulder
+                               rightElbowX < rightShoulderX && //right shoulder must be to the right of rright elbow
+                               Math.Abs(rightElbowY - rightShoulderY) < 0.2f && //right elbow and right shoulder should be at roughly the same height
+                                rightHandY > rightElbowY && //right hand should be higher than elbow
+                                Math.Abs(rightHandY - headY) < 0.04f); //right hand and right shoulder should be close laterally
 
 						Vector3 jointPos = jointsPos[gestureData.joint];
 						CheckPoseComplete(ref gestureData, timestamp, jointPos, isInPose, KinectInterop.Constants.PoseCompleteDuration);
@@ -369,39 +446,27 @@ public class KinectGestures
 			//MARK ADDED THIS CASE
 			
 			case Gestures.LeftBicepFlex:
-				float leftHandX = 0;
-				float leftHandY = 0;
-				float leftShoulderX = 0;
-				float leftShoulderY = 0;
-				float leftElbowX = 0;
-				float leftElbowY = 0;
-				if(jointsTracked[leftHandIndex] && jointsTracked[leftShoulderIndex] && jointsTracked[leftElbowIndex]){
-					leftHandX = jointsPos[leftHandIndex].x;
-					leftHandY = jointsPos[leftHandIndex].y;
-					leftShoulderX = jointsPos[leftShoulderIndex].x;
-					leftShoulderY = jointsPos[leftShoulderIndex].y;
-					leftElbowX = jointsPos[leftElbowIndex].x;
-					leftElbowY = jointsPos[leftElbowIndex].y;
-				}
 				switch(gestureData.state)
 				{
 				case 0:  // gesture detection
-					if(jointsTracked[leftHandIndex] && jointsTracked[leftShoulderIndex] && jointsTracked[leftElbowIndex] &&
+					if(jointsTracked[leftHandIndex] && jointsTracked[leftShoulderIndex] && jointsTracked[leftElbowIndex] && jointsTracked[headIndex] &&
 					   leftHandY > leftShoulderY && //left hand must be above left shoulder
 					   leftElbowX < leftShoulderX && //left shoulder must be to the right of rleft elbow
 					   Math.Abs(leftElbowY - leftShoulderY) < 0.2f && //left elbow and left shoulder should be at roughly the same height
-						Math.Abs(leftHandX - leftShoulderX) < 0.1f)//right hand and right shoulder should be close laterally
+					    leftHandY > leftElbowY && //left hand should be higher than elbow
+                        Math.Abs(leftHandY - headY) < 0.04f) //left hand shouldn't he way higher than head
 					{
 						SetGestureJoint(ref gestureData, timestamp, rightHandIndex, jointsPos[rightHandIndex]);
 					}
 					break;
 					
 				case 1:  // gesture complete
-				bool isInPose = (jointsTracked[leftHandIndex] && jointsTracked[leftShoulderIndex] && jointsTracked[leftElbowIndex] &&
-				                 leftHandY > leftShoulderY && //left hand must be above left shoulder
-				                 leftElbowX < leftShoulderX && //left shoulder must be to the right of rleft elbow
-				                 Math.Abs(leftElbowY - leftShoulderY) < 0.2f && //left elbow and left shoulder should be at roughly the same height
-				                 Math.Abs(leftHandX - leftShoulderX) < 0.1f);//right hand and right shoulder should be close laterally;
+				bool isInPose = (jointsTracked[leftHandIndex] && jointsTracked[leftShoulderIndex] && jointsTracked[leftElbowIndex] && jointsTracked[headIndex] &&
+					   leftHandY > leftShoulderY && //left hand must be above left shoulder
+					   leftElbowX < leftShoulderX && //left shoulder must be to the right of rleft elbow
+					   Math.Abs(leftElbowY - leftShoulderY) < 0.2f && //left elbow and left shoulder should be at roughly the same height
+					    leftHandY > leftElbowY && //left hand should be higher than elbow
+                        Math.Abs(leftHandY - headY) < 0.04f);
 					
 					Vector3 jointPos = jointsPos[gestureData.joint];
 					CheckPoseComplete(ref gestureData, timestamp, jointPos, isInPose, KinectInterop.Constants.PoseCompleteDuration);
