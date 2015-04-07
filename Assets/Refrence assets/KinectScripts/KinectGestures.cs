@@ -375,7 +375,8 @@ public class KinectGestures
 
                     case 1:  // gesture complete
                         bool isInPose = (jointsTracked[rightHandIndex] && jointsTracked[rightShoulderIndex] && jointsTracked[rightElbowIndex] && jointsTracked[headIndex] &&
-                           rightHandY < rightShoulderY && //right hand must be below right shoulder
+                           (timestamp - gestureData.timestamp) < 1f && //make sure they hold it   
+                            rightHandY < rightShoulderY && //right hand must be below right shoulder
                            rightElbowX > rightShoulderX && //right shoulder must be to the right of right elbow
                            Math.Abs(rightElbowY - rightShoulderY) < 0.3f && //right elbow and right shoulder should be at roughly the same height
                             rightHandY < rightElbowY); //right hand should be lower than elbow
@@ -402,7 +403,8 @@ public class KinectGestures
 
                     case 1:  // gesture complete
                         bool isInPose = (jointsTracked[leftHandIndex] && jointsTracked[leftShoulderIndex] && jointsTracked[leftElbowIndex] && jointsTracked[headIndex] &&
-                           leftHandY < leftShoulderY && //left hand must be below left shoulder
+                           (timestamp - gestureData.timestamp) < 1f && //make sure they hold it   
+                            leftHandY < leftShoulderY && //left hand must be below left shoulder
                            leftElbowX < leftShoulderX && //left shoulder must be to the left of left elbow
                            Math.Abs(leftElbowY - leftShoulderY) < 0.3f && //left elbow and left shoulder should be at roughly the same height
                             leftHandY < leftElbowY); //left hand should be lower than elbow
@@ -430,8 +432,8 @@ public class KinectGestures
 							
 					case 1:  // gesture complete
 						bool isInPose = (jointsTracked[rightHandIndex] && jointsTracked[rightShoulderIndex] && jointsTracked[rightElbowIndex] && jointsTracked[headIndex] &&
-                               rightHandY > rightShoulderY && //right hand must be above right shoulder
-                               rightElbowX < rightShoulderX && //right shoulder must be to the right of rright elbow
+                            rightHandY > rightShoulderY && //right hand must be above right shoulder
+                               rightElbowX > rightShoulderX && //right shoulder must be to the right of right elbow
                                Math.Abs(rightElbowY - rightShoulderY) < 0.2f && //right elbow and right shoulder should be at roughly the same height
                                 rightHandY > rightElbowY && //right hand should be higher than elbow
                                 Math.Abs(rightHandY - headY) < 0.04f); //right hand and right shoulder should be close laterally
