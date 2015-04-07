@@ -392,8 +392,8 @@ public class KinectGestures
                 {
                     case 0:  // gesture detection
                         if (jointsTracked[leftHandIndex] && jointsTracked[leftShoulderIndex] && jointsTracked[leftElbowIndex] && jointsTracked[headIndex] &&
-                           leftShoulderY - leftHandY > 1.5f && //left hand must be below left shoulder
-                           leftElbowX < leftShoulderX && //left shoulder must be to the left of left elbow
+                           leftShoulderY > leftHandY && //left hand must be below left shoulder
+                           leftShoulderX - leftElbowX > 1.5f && //left shoulder must be to the left of left elbow
                            Math.Abs(leftElbowY - leftShoulderY) < 0.15f && //left elbow and left shoulder should be at roughly the same height
                             leftHandY < leftElbowY) //left hand should be lower than elbow
                         {
@@ -404,8 +404,8 @@ public class KinectGestures
                     case 1:  // gesture complete
                         bool isInPose = (jointsTracked[leftHandIndex] && jointsTracked[leftShoulderIndex] && jointsTracked[leftElbowIndex] && jointsTracked[headIndex] &&
                            (timestamp - gestureData.timestamp) < 1.5f && //make sure they hold it   
-                            leftShoulderY - leftHandY > 1.5f && //left hand must be below left shoulder
-                           leftElbowX < leftShoulderX && //left shoulder must be to the left of left elbow
+                            leftShoulderY > leftHandY && //left hand must be below left shoulder
+                           leftShoulderX - leftElbowX > 1.5f && //left shoulder must be to the left of left elbow
                            Math.Abs(leftElbowY - leftShoulderY) < 0.15f && //left elbow and left shoulder should be at roughly the same height
                             leftHandY < leftElbowY); //left hand should be lower than elbow
 
