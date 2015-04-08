@@ -366,8 +366,8 @@ public class KinectGestures
                         if (jointsTracked[rightHandIndex] && jointsTracked[rightShoulderIndex] && jointsTracked[rightElbowIndex] && jointsTracked[headIndex] &&
                            rightHandY < rightShoulderY && //right hand must be below right shoulder
                            rightElbowX > rightShoulderX && //right shoulder must be to the right of right elbow
-                           Math.Abs(rightElbowY - rightShoulderY) < 0.15f && //right elbow and right shoulder should be at roughly the same height
-                           Math.Abs(rightElbowX - rightHandX) < 0.07f && //right elbow and right hand should be roughly the same horizontally
+                           Math.Abs(rightElbowY - rightShoulderY) < 0.3f &&//0.15f && //right elbow and right shoulder should be at roughly the same height
+                           Math.Abs(rightElbowX - rightHandX) < 0.15f &&//0.07f && //right elbow and right hand should be roughly the same horizontally
                             rightHandY < rightElbowY) //right hand should be lower than elbow
                         {
                             SetGestureJoint(ref gestureData, timestamp, rightHandIndex, jointsPos[rightHandIndex]);
@@ -379,8 +379,8 @@ public class KinectGestures
                            //(timestamp - gestureData.timestamp) < 1.5f && //make sure they hold it   
                             rightHandY < rightShoulderY && //right hand must be below right shoulder
                            rightElbowX > rightShoulderX && //right shoulder must be to the right of right elbow
-                           Math.Abs(rightElbowY - rightShoulderY) < 0.15f && //right elbow and right shoulder should be at roughly the same height
-                           Math.Abs(rightElbowX - rightHandX) < 0.07f && //right elbow and right hand should be roughly the same horizontally
+                           Math.Abs(rightElbowY - rightShoulderY) < 0.3f &&//0.15f && //right elbow and right shoulder should be at roughly the same height
+                           Math.Abs(rightElbowX - rightHandX) < 0.15f &&//0.07f && //right elbow and right hand should be roughly the same horizontally
                             rightHandY < rightElbowY); //right hand should be lower than elbow
 
                         Vector3 jointPos = jointsPos[gestureData.joint];
@@ -396,8 +396,8 @@ public class KinectGestures
                         if (jointsTracked[leftHandIndex] && jointsTracked[leftShoulderIndex] && jointsTracked[leftElbowIndex] && jointsTracked[headIndex] &&
                            leftShoulderY > leftHandY && //left hand must be below left shoulder
                            leftShoulderX > leftElbowX && //left shoulder must be to the left of left elbow
-                           Math.Abs(leftElbowY - leftShoulderY) < 0.15f && //left elbow and left shoulder should be at roughly the same height
-                           Math.Abs(leftElbowX - leftHandX) < 0.07f && //left elbow and left hand should be roughly the same horizontally
+                           Math.Abs(leftElbowY - leftShoulderY) < 0.3f &&//0.15f && //left elbow and left shoulder should be at roughly the same height
+                           Math.Abs(leftElbowX - leftHandX) < 0.15f &&//0.07f && //left elbow and left hand should be roughly the same horizontally
                             leftHandY < leftElbowY) //left hand should be lower than elbow
                         {
                             SetGestureJoint(ref gestureData, timestamp, leftHandIndex, jointsPos[leftHandIndex]);
@@ -409,8 +409,8 @@ public class KinectGestures
                            //(timestamp - gestureData.timestamp) < 1.5f && //make sure they hold it   
                             leftShoulderY > leftHandY && //left hand must be below left shoulder
                            leftShoulderX > leftElbowX && //left shoulder must be to the left of left elbow
-                           Math.Abs(leftElbowY - leftShoulderY) < 0.15f && //left elbow and left shoulder should be at roughly the same height
-                           Math.Abs(leftElbowX - leftHandX) < 0.07f && //left elbow and left hand should be roughly the same horizontally
+                           Math.Abs(leftElbowY - leftShoulderY) < 0.3f &&//0.15f && //left elbow and left shoulder should be at roughly the same height
+                           Math.Abs(leftElbowX - leftHandX) < 0.15f &&//0.07f && //left elbow and left hand should be roughly the same horizontally
                             leftHandY < leftElbowY); //left hand should be lower than elbow
 
                         Vector3 jointPos = jointsPos[gestureData.joint];
