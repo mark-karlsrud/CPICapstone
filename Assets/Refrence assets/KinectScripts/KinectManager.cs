@@ -7,12 +7,14 @@ using System.Collections.Generic;
 
 public class KinectManager : MonoBehaviour 
 {
-	public GUIText rightHandPositionX;
+	public GUIText rightHandPositionX = null;
 	public GUIText rightHandPositionY;
 	public GUIText rightShoulderPositionX;
 	public GUIText rightShoulderPositionY;
 	public GUIText rightElbowPositionX;
 	public GUIText rightElbowPositionY;
+    public GUIText headX;
+    public GUIText headY;
 	
 	// How high off the ground is the sensor (in meters).
 	public float sensorHeight = 1.0f;
@@ -2459,15 +2461,20 @@ public class KinectManager : MonoBehaviour
 	}
 	
 	public void printNumbers(Vector3[] playerJointsPos){
-		/*
-		rightHandPositionX.guiText.text = "LHand X:" + playerJointsPos[(int)KinectInterop.JointType.HandLeft].x.ToString();
-		rightHandPositionY.guiText.text = "LHand Y:" + playerJointsPos[(int)KinectInterop.JointType.HandLeft].y.ToString();
-		rightShoulderPositionX.guiText.text = "LShoulder X:" + playerJointsPos[(int)KinectInterop.JointType.ShoulderLeft].x.ToString();
-		rightShoulderPositionY.guiText.text = "LShoulder Y:" + playerJointsPos[(int)KinectInterop.JointType.ShoulderLeft].y.ToString();
-		rightElbowPositionX.guiText.text = "LElbow X:" + playerJointsPos[(int)KinectInterop.JointType.ElbowLeft].x.ToString();
-		rightElbowPositionY.guiText.text = "LElbow Y:" + playerJointsPos[(int)KinectInterop.JointType.ElbowLeft].y.ToString();
+        if (rightHandPositionX != null)
+        {
+            
+            rightHandPositionX.guiText.text = "LHand X:" + playerJointsPos[(int)KinectInterop.JointType.HandLeft].x.ToString();
+            rightHandPositionY.guiText.text = "LHand Y:" + playerJointsPos[(int)KinectInterop.JointType.HandLeft].y.ToString();
+            rightShoulderPositionX.guiText.text = "LShoulder X:" + playerJointsPos[(int)KinectInterop.JointType.ShoulderLeft].x.ToString();
+            rightShoulderPositionY.guiText.text = "LShoulder Y:" + playerJointsPos[(int)KinectInterop.JointType.ShoulderLeft].y.ToString();
+            rightElbowPositionX.guiText.text = "LElbow X:" + playerJointsPos[(int)KinectInterop.JointType.ElbowLeft].x.ToString();
+            rightElbowPositionY.guiText.text = "LElbow Y:" + playerJointsPos[(int)KinectInterop.JointType.ElbowLeft].y.ToString();
+            headX.guiText.text = "Head X:" + playerJointsPos[(int)KinectInterop.JointType.Head].x.ToString();
+            headY.guiText.text = "Head Y:" + playerJointsPos[(int)KinectInterop.JointType.Head].y.ToString();
 		
-		*/
+            
+        }
 		/*
 		rightHandPositionX.guiText.text = "footLeft X:" + playerJointsPos[15].x.ToString();
 		rightHandPositionY.guiText.text = "Num of Joints:" + playerJointsPos.Length.ToString();

@@ -13,6 +13,7 @@ public class CopyPose : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        transform.Translate(transform.forward*Time.deltaTime);
 		MuscleGestureListener m = c.GetComponent<MuscleGestureListener> ();
 		if (m.IsTPose()) {
             if (!animator.GetCurrentAnimatorStateInfo(3).IsName("tpose"))
@@ -27,6 +28,25 @@ public class CopyPose : MonoBehaviour {
         {
             if (!animator.GetCurrentAnimatorStateInfo(3).IsName("left bicep flex"))
                 animator.SetTrigger("left bicep flex");
+        }
+        else if (m.RightBicepFlexDown())
+        {
+            if (!animator.GetCurrentAnimatorStateInfo(3).IsName("right bicep flex down"))
+                animator.SetTrigger("right bicep flex down");
+        }
+        else if (m.LeftBicepFlexDown())
+        {
+            if (!animator.GetCurrentAnimatorStateInfo(3).IsName("left bicep flex down"))
+                animator.SetTrigger("left bicep flex down");
+        }
+        else
+        {
+            /*
+            if (!(animator.GetCurrentAnimatorStateInfo(3).IsName("arm inside") ||
+                    animator.GetCurrentAnimatorStateInfo(3).IsName("arm outside") ||
+                    animator.GetCurrentAnimatorStateInfo(3).IsName("arm falling")))
+                animator.SetTrigger("no pose");
+            */
         }
 	}
 }
