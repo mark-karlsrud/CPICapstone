@@ -8,7 +8,7 @@ public class MuscleGestureListener : MonoBehaviour, KinectGestures.GestureListen
 	// GUI Text to display the gesture messages.
 	public GUIText GestureInfo;
 
-	public static bool tpose,rightBicepFlex,leftBicepFlex;
+    public static bool tpose, rightBicepFlex, leftBicepFlex, rightBicepFlexDown, leftBicepFlexDown;
 	
 	
 	public bool IsTPose()
@@ -41,20 +41,42 @@ public class MuscleGestureListener : MonoBehaviour, KinectGestures.GestureListen
 
         return false;
     }
+    public bool RightBicepFlexDown()
+    {
+        if (rightBicepFlexDown)
+        {
+            rightBicepFlexDown = false;
+            return true;
+        }
+
+        return false;
+    }
+    public bool LeftBicepFlexDown()
+    {
+        if (leftBicepFlexDown)
+        {
+            leftBicepFlexDown = false;
+            return true;
+        }
+
+        return false;
+    }
 	
 	public void UserDetected(long userId, int userIndex)
 	{
 		// detect these user specific gestures
 		KinectManager manager = KinectManager.Instance;
 
-		manager.DetectGesture(userId, KinectGestures.Gestures.SwipeLeft);
-
+		//manager.DetectGesture(userId, KinectGestures.Gestures.SwipeLeft);
 		manager.DetectGesture(userId, KinectGestures.Gestures.LeftBicepFlex);
 		manager.DetectGesture(userId, KinectGestures.Gestures.RightBicepFlex);
-		
 		manager.DetectGesture(userId, KinectGestures.Gestures.Tpose);
-		manager.DetectGesture(userId, KinectGestures.Gestures.RaiseRightHand);
-		manager.DetectGesture(userId, KinectGestures.Gestures.RaiseLeftHand);
+		//manager.DetectGesture(userId, KinectGestures.Gestures.RaiseRightHand);
+        //manager.DetectGesture(userId, KinectGestures.Gestures.RaiseLeftHand);
+
+        manager.DetectGesture(userId, KinectGestures.Gestures.LeftBicepFlexDown);
+        manager.DetectGesture(userId, KinectGestures.Gestures.RightBicepFlexDown);
+       
 		
 		if(GestureInfo != null)
 		{
@@ -95,6 +117,14 @@ public class MuscleGestureListener : MonoBehaviour, KinectGestures.GestureListen
         else if (gesture == KinectGestures.Gestures.LeftBicepFlex)
         {
             leftBicepFlex = true;
+        }
+        else if (gesture == KinectGestures.Gestures.RightBicepFlexDown)
+        {
+            rightBicepFlexDown = true;
+        }
+        else if (gesture == KinectGestures.Gestures.LeftBicepFlexDown)
+        {
+            leftBicepFlexDown = true;
         }
 		
 		return true;
