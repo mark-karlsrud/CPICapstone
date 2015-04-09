@@ -13,7 +13,7 @@ public class CopyPose : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        transform.Translate(transform.forward*Time.deltaTime);
+        //transform.Translate(5*transform.forward*Time.deltaTime);
 		MuscleGestureListener m = c.GetComponent<MuscleGestureListener> ();
 		if (m.IsTPose()) {
             if (!animator.GetCurrentAnimatorStateInfo(3).IsName("tpose"))
