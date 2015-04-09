@@ -48,5 +48,28 @@ public class CopyPose : MonoBehaviour {
                 animator.SetTrigger("no pose");
             */
         }
+
+
+        /*THIS IS FOR TESTING PURPOSES*/
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            if (!animator.GetCurrentAnimatorStateInfo(3).IsName("tpose"))
+                animator.SetTrigger("tpose");
+        }
 	}
+
+    void OnTriggerEnter(Collider col)
+    {
+        if (col.gameObject.tag != "destination")
+        {
+            if (animator.GetCurrentAnimatorStateInfo(3).IsName(col.gameObject.name))
+            {
+                Debug.Log("SUCCESS");
+            }
+            else
+            {
+                Debug.Log("FAIL");
+            }
+        }
+    }
 }
