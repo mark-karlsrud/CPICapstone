@@ -13,7 +13,7 @@ public class SimonSaysFinal : MonoBehaviour
 	public GUIText Prompt;
 	public GUIText Score;
 	public GUIText timeLimitText;
-	public GUITexture checkMark,redX;
+	public GUITexture checkMark,redX, nextRoundTexture;
 	private bool pickPose,simonsTurn,listenToUser; //stages of game
 	private bool fail;
 	public bool madeIt = false;
@@ -36,16 +36,15 @@ public class SimonSaysFinal : MonoBehaviour
 	
 	private System.Random rand;
 	
-	string[] Poses = new string[5]{
+	string[] Poses = new string[7]{
 		
 		"LeftBicepFlex",
+        "RightBicepFlex",
+        "RaiseLeftHand",
 		"RaiseRightHand",
 		"Tpose",
 		"SwipeLeft",
-		"SwipeRight"
-		//"SwipeDownLeft",
-		//"SwipeDownRight"
-		
+		"SwipeRight"		
 	};
 	
 	private int currentPose;
@@ -53,6 +52,8 @@ public class SimonSaysFinal : MonoBehaviour
 	// Use this for initialization
 	void Start () 
 	{
+        nextRoundTexture.enabled = false;
+
 		endRoundTimer = new System.Timers.Timer ();
 		endRoundTimer.Elapsed += new ElapsedEventHandler(OnTimedEvent);
 		endRoundTimer.Interval = 5000; //5 seconds between rounds
@@ -102,6 +103,7 @@ public class SimonSaysFinal : MonoBehaviour
 		
 		if (pickPose) //Time to add another pose to the list (new round)
 		{
+            nextRoundTexture.enabled = false;
 			if(!fail) //do not add pose if previously failed
 				pickAPose();
 			pickPose = false;
@@ -144,10 +146,13 @@ public class SimonSaysFinal : MonoBehaviour
 		}
 
 		if (endRoundTimer.Enabled) {
-			if(fail)
-				Output.guiText.text = "You failed. Strikes:" + strikes.ToString();
-			else
-				Output.guiText.text = "You did it!";
+            if (fail)
+                Output.guiText.text = "You failed. Strikes:" + strikes.ToString();
+            else
+            {
+                Output.guiText.text = "You did it!";
+                nextRoundTexture.enabled = true;
+            }
 		}
 		
 	}
@@ -165,7 +170,8 @@ public class SimonSaysFinal : MonoBehaviour
 		
 		
 		string doingPose = InputText.guiText.text.Replace(" detected", "");
-		if(doingPose.Contains("Right"))
+        InputText.guiText.text = "";
+        if(doingPose.Contains("Right"))
 			doingPose = doingPose.Replace("Right","Left");
 		else {
 			doingPose = doingPose.Replace("Left","Right");
@@ -190,8 +196,9 @@ public class SimonSaysFinal : MonoBehaviour
 			//Debug.Log("poseIndex:" + poseIndex);
 			
 			//Correct pose
-			if (poseIndex == posesToPlay.Peek())
+			if (poseIndex == posesToPlay.Peek() && poseIndex != -1)
 			{
+                Debug.Log("You successfully did " + doingPose + ", which is " + Poses[posesToPlay.Peek()]);
 				Output.guiText.text = "SUCCESS";
 
 				posesToPlay.Dequeue();
@@ -213,7 +220,7 @@ public class SimonSaysFinal : MonoBehaviour
 				checkmarkTimer.Enabled = true;
 				checkmarkTimer.Start ();
 
-				Debug.Log("size:"+posesToPlay.Count);
+				//Debug.Log("size:"+posesToPlay.Count);
 				//user has completed all poses
 				if(posesToPlay.Count == 0){
 					score++;
@@ -225,8 +232,9 @@ public class SimonSaysFinal : MonoBehaviour
 					endRoundTimer.Start ();
 				}
 			}
-			else //Not the right pose
+			else if(poseIndex != -1) //Not the right pose
 			{
+                Debug.Log("You did " + doingPose + " instead of " + Poses[posesToPlay.Peek()]);
 				InputText.guiText.text = "";
 				showX = true;
 				xTimer.Enabled = true;
@@ -245,6 +253,7 @@ public class SimonSaysFinal : MonoBehaviour
 		{
 			posesToPlay = new Queue<int>(posesList);
 			simonsTurn = false;
+            InputText.guiText.text = "";
 			listenToUser = true;
 			fail = false;
 			timeRemaining = 5 * posesList.Count; // 5 seconds for every pose

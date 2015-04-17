@@ -7,56 +7,88 @@ public class GestureListener : MonoBehaviour, KinectGestures.GestureListenerInte
 {
 	// GUI Text to display the gesture messages.
 	public GUIText GestureInfo;
-	
-	private bool swipeLeft;
-	private bool swipeRight;
-	private bool swipeUp;
-	private bool swipeDown;
+
+    private bool tpose, swipeL, swipeR, raiseR, raiseL, Rflex, Lflex;
 	
 	
-	public bool IsSwipeLeft()
+	public bool IsTpose()
 	{
-		if(swipeLeft)
+		if(tpose)
 		{
-			swipeLeft = false;
+			tpose = false;
 			return true;
 		}
 		
 		return false;
 	}
-	
-	public bool IsSwipeRight()
-	{
-		if(swipeRight)
-		{
-			swipeRight = false;
-			return true;
-		}
-		
-		return false;
-	}
-	
-	public bool IsSwipeUp()
-	{
-		if(swipeUp)
-		{
-			swipeUp = false;
-			return true;
-		}
-		
-		return false;
-	}
-	
-	public bool IsSwipeDown()
-	{
-		if(swipeDown)
-		{
-			swipeDown = false;
-			return true;
-		}
-		
-		return false;
-	}
+    public bool IsSwipeLeft()
+    {
+        if (swipeL)
+        {
+            swipeL = false;
+            return true;
+        }
+
+        return false;
+    }
+    public bool IsSwipeRight()
+    {
+        if (swipeR)
+        {
+            swipeR = false;
+            return true;
+        }
+
+        return false;
+    }
+    public bool IsSwipeUp()
+    {
+        return false;
+    }
+    public bool IsSwipeDown()
+    {
+        return false;
+    }
+    public bool IsRaiseR()
+    {
+        if (raiseR)
+        {
+            raiseR = false;
+            return true;
+        }
+
+        return false;
+    }
+    public bool IsRaiseL()
+    {
+        if (raiseL)
+        {
+            raiseL = false;
+            return true;
+        }
+
+        return false;
+    }
+    public bool IsRflex()
+    {
+        if (Rflex)
+        {
+            Rflex = false;
+            return true;
+        }
+
+        return false;
+    }
+    public bool IsLflex()
+    {
+        if (Lflex)
+        {
+            tpose = false;
+            return true;
+        }
+
+        return false;
+    }
 	
 
 	public void UserDetected(long userId, int userIndex)
@@ -67,8 +99,6 @@ public class GestureListener : MonoBehaviour, KinectGestures.GestureListenerInte
         
 		manager.DetectGesture(userId, KinectGestures.Gestures.SwipeLeft);
 		manager.DetectGesture(userId, KinectGestures.Gestures.SwipeRight);
-		//manager.DetectGesture(userId, KinectGestures.Gestures.SwipeUp);
-		//manager.DetectGesture(userId, KinectGestures.Gestures.SwipeDown);
 		manager.DetectGesture(userId, KinectGestures.Gestures.LeftBicepFlex);
 		manager.DetectGesture(userId, KinectGestures.Gestures.RightBicepFlex);
 		
@@ -99,23 +129,26 @@ public class GestureListener : MonoBehaviour, KinectGestures.GestureListenerInte
 	public bool GestureCompleted (long userId, int userIndex, KinectGestures.Gestures gesture, 
 	                              KinectInterop.JointType joint, Vector3 screenPos)
 	{
-		string sGestureText = gesture + " detected";
+	    string sGestureText = gesture + " detected";
 		if(GestureInfo != null)
 		{
 			GestureInfo.guiText.text = sGestureText;
 		}
 		
 		if(gesture == KinectGestures.Gestures.SwipeLeft)
-			swipeLeft = true;
+			swipeL = true;
 		else if(gesture == KinectGestures.Gestures.SwipeRight)
-			swipeRight = true;
-		else if(gesture == KinectGestures.Gestures.SwipeUp)
-			swipeUp = true;
-		else if(gesture == KinectGestures.Gestures.SwipeDown)
-			swipeDown = true;
-		else if (gesture == KinectGestures.Gestures.Tpose) {
-			Debug.Log ("set tpose to true");
-		}
+			swipeR = true;
+		else if (gesture == KinectGestures.Gestures.Tpose)
+            tpose = true;
+        else if (gesture == KinectGestures.Gestures.RaiseLeftHand)
+            raiseL = true;
+        else if (gesture == KinectGestures.Gestures.RaiseRightHand)
+            raiseR = true;
+        else if (gesture == KinectGestures.Gestures.RightBicepFlex)
+            Rflex = true;
+        else if (gesture == KinectGestures.Gestures.LeftBicepFlex)
+            Lflex = true;
 		
 		return true;
 	}
