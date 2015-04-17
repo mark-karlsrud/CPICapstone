@@ -11,6 +11,7 @@ public class MinuteTimer : MonoBehaviour {
 	// Update is called once per frame
 	void Update () 
     {
+        
 
         timer = Time.timeSinceLevelLoad;
          Debug.Log(timer);

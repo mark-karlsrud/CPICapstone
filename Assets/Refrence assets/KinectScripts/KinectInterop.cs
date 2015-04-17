@@ -19,7 +19,7 @@ public class KinectInterop
 		public const int JointCount = 25;
 
 		public const float MinTimeBetweenSameGestures = 0.0f;
-		public const float PoseCompleteDuration = 1.0f;
+        public const float PoseCompleteDuration = 0.25f;//1.0f;// WE CHANGED THIS FROM 1 TO .25! -MARK AND PAT
 		public const float ClickMaxDistance = 0.05f;
 		public const float ClickStayDuration = 2.0f;
 	}

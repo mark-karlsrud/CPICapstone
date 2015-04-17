@@ -8,7 +8,7 @@ public class MuscleGestureListener : MonoBehaviour, KinectGestures.GestureListen
 	// GUI Text to display the gesture messages.
 	public GUIText GestureInfo;
 
-    public static bool tpose, rightBicepFlex, leftBicepFlex, rightBicepFlexDown, leftBicepFlexDown;
+    public static bool tpose, rightBicepFlex, leftBicepFlex, rightBicepFlexDown, leftBicepFlexDown, doubleBicepFlex, doubleBicepFlexDown;
 	
 	
 	public bool IsTPose()
@@ -23,9 +23,9 @@ public class MuscleGestureListener : MonoBehaviour, KinectGestures.GestureListen
 	}
     public bool RightBicepFlex()
     {
-        if (rightBicepFlex)
+        if (KinectGestures.rightBicepFlex)//rightBicepFlex)
         {
-            rightBicepFlex = false;
+            KinectGestures.rightBicepFlex = false;
             return true;
         }
 
@@ -33,9 +33,9 @@ public class MuscleGestureListener : MonoBehaviour, KinectGestures.GestureListen
     }
     public bool LeftBicepFlex()
     {
-        if (leftBicepFlex)
+        if (KinectGestures.leftBicepFlex)//leftBicepFlex)
         {
-            leftBicepFlex = false;
+            KinectGestures.leftBicepFlex = false;// leftBicepFlex = false;
             return true;
         }
 
@@ -43,9 +43,9 @@ public class MuscleGestureListener : MonoBehaviour, KinectGestures.GestureListen
     }
     public bool RightBicepFlexDown()
     {
-        if (rightBicepFlexDown)
+        if (KinectGestures.rightBicepFlexDown)
         {
-            rightBicepFlexDown = false;
+            KinectGestures.rightBicepFlexDown = false;
             return true;
         }
 
@@ -53,9 +53,29 @@ public class MuscleGestureListener : MonoBehaviour, KinectGestures.GestureListen
     }
     public bool LeftBicepFlexDown()
     {
-        if (leftBicepFlexDown)
+        if (KinectGestures.leftBicepFlex)
         {
-            leftBicepFlexDown = false;
+            KinectGestures.leftBicepFlex = false;
+            return true;
+        }
+
+        return false;
+    }
+    public bool DoubleBicepFlex()
+    {
+        if (doubleBicepFlex)
+        {
+            doubleBicepFlex = false;
+            return true;
+        }
+
+        return false;
+    }
+    public bool DoubleBicepFlexDown()
+    {
+        if (doubleBicepFlexDown)
+        {
+            doubleBicepFlexDown = false;
             return true;
         }
 
@@ -67,16 +87,17 @@ public class MuscleGestureListener : MonoBehaviour, KinectGestures.GestureListen
 		// detect these user specific gestures
 		KinectManager manager = KinectManager.Instance;
 
-		//manager.DetectGesture(userId, KinectGestures.Gestures.SwipeLeft);
-		manager.DetectGesture(userId, KinectGestures.Gestures.LeftBicepFlex);
-		manager.DetectGesture(userId, KinectGestures.Gestures.RightBicepFlex);
+		//manager.DetectGesture(userId, KinectGestures.Gestures.LeftBicepFlex);
+		//manager.DetectGesture(userId, KinectGestures.Gestures.RightBicepFlex);
 		manager.DetectGesture(userId, KinectGestures.Gestures.Tpose);
 		//manager.DetectGesture(userId, KinectGestures.Gestures.RaiseRightHand);
         //manager.DetectGesture(userId, KinectGestures.Gestures.RaiseLeftHand);
 
-        manager.DetectGesture(userId, KinectGestures.Gestures.LeftBicepFlexDown);
-        manager.DetectGesture(userId, KinectGestures.Gestures.RightBicepFlexDown);
-       
+        manager.DetectGesture(userId, KinectGestures.Gestures.DoubleBicepFlex);
+        manager.DetectGesture(userId, KinectGestures.Gestures.DoubleBicepFlexDown);
+        //manager.DetectGesture(userId, KinectGestures.Gestures.LeftBicepFlexDown);
+        //manager.DetectGesture(userId, KinectGestures.Gestures.RightBicepFlexDown);
+        manager.DetectGesture(userId, KinectGestures.Gestures.Running);
 		
 		if(GestureInfo != null)
 		{
@@ -112,19 +133,27 @@ public class MuscleGestureListener : MonoBehaviour, KinectGestures.GestureListen
 		}
         else if (gesture == KinectGestures.Gestures.RightBicepFlex)
         {
-            rightBicepFlex = true;
+            //rightBicepFlex = true;
         }
         else if (gesture == KinectGestures.Gestures.LeftBicepFlex)
         {
-            leftBicepFlex = true;
+            //leftBicepFlex = true;
         }
         else if (gesture == KinectGestures.Gestures.RightBicepFlexDown)
         {
-            rightBicepFlexDown = true;
+            //rightBicepFlexDown = true;
         }
         else if (gesture == KinectGestures.Gestures.LeftBicepFlexDown)
         {
-            leftBicepFlexDown = true;
+            //leftBicepFlexDown = true;
+        }
+        else if (gesture == KinectGestures.Gestures.DoubleBicepFlex)
+        {
+            doubleBicepFlex = true;
+        }
+        else if (gesture == KinectGestures.Gestures.DoubleBicepFlexDown)
+        {
+            doubleBicepFlexDown = true;
         }
 		
 		return true;
