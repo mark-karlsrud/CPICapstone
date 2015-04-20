@@ -9,6 +9,12 @@ public class Controller : MonoBehaviour {
 	public static string name = "";
 	public static string[] names = new string[10];
 
+    public static int muscleWallCount = 0;
+    public static bool muscleAI1Dead;
+    public static bool muscleAI2Dead;
+    public static bool muscleAI3Dead;
+    public static int muscleHealth = 4;
+
 	void Awake()
 	{
 		DontDestroyOnLoad(gameObject);
