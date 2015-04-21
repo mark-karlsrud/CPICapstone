@@ -47,12 +47,13 @@ public class GoToNextWall : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Debug.Log("going to block " + target.gameObject.name);
         agent.SetDestination(target.position);
     }
 
     void OnTriggerEnter(Collider col)
     {
-        if (col.gameObject.tag == "destination")
+        if (/*col.gameObject.tag == "destination" && */col.gameObject.name == target.gameObject.name)
         {
             target = walls.Dequeue();
             //Destroy(col.gameObject);
