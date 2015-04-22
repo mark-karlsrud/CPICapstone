@@ -9,6 +9,7 @@ public class GoToNextWall : MonoBehaviour
     public Queue<Transform> walls;
     private Transform target;
     NavMeshAgent agent;
+    public int startAtWall = -1;
 
     // Use this for initialization
     void Start()
@@ -40,6 +41,17 @@ public class GoToNextWall : MonoBehaviour
         list = list.OrderBy(o => int.Parse(o.gameObject.name)).ToList();
 
         walls = new Queue<Transform>(list);
+
+        if(startAtWall > -1){
+            while(walls.Peek().gameObject.name != startAtWall.ToString()){
+                walls.Dequeue();
+            }
+            NavMeshAgent n = GetComponent<NavMeshAgent>();
+            n.enabled = false;
+            transform.position = GameObject.Find(startAtWall.ToString()).transform.position;
+            n.enabled = true;
+        }
+
         agent = GetComponent<NavMeshAgent>();
         target = walls.Dequeue();
     }
