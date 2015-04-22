@@ -8,7 +8,7 @@ public class MuscelPresentationScript : MonoBehaviour
     private RunningListener listener;
     public Graphics g;
     public static Timer timer;
-    
+    public bool isRunning;
 
 
     public float turnSpeed = 50f;
@@ -31,6 +31,9 @@ public class MuscelPresentationScript : MonoBehaviour
 
     void Update()
     {
+        isRunning = timer.Enabled;
+
+
         if (KinectGestures.running)
         {//listener.IsRunning())
             timer.Interval = 250;
@@ -41,7 +44,7 @@ public class MuscelPresentationScript : MonoBehaviour
         {
 
         }
-        if (timer.Enabled)// && !player.collider.)
+        if (isRunning)
         {
             //running
         }
