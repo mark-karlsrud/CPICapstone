@@ -16,6 +16,8 @@ public class SetWalls : MonoBehaviour {
                 newObject = wallPossibilities[Random.Range(0, wallPossibilities.Length)];
                 newObject.transform.position = wall.transform.position;
                 newObject.transform.rotation = wall.transform.rotation;
+                if (newObject.name.Contains("right"))
+                    newObject.transform.Rotate(new Vector3(0,0,180));
                 newObject.transform.localScale = wall.transform.localScale;
                 newObject.tag = "wall";
                 Instantiate(newObject);
