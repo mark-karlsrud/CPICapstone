@@ -71,4 +71,9 @@ public class GoToNextWall : MonoBehaviour
             //Destroy(col.gameObject);
         }
     }
+
+    public void setTarget()
+    {
+        target = walls.Dequeue();
+    }
 }
