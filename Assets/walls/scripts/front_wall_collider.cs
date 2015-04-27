@@ -15,6 +15,7 @@ public class front_wall_collider : MonoBehaviour {
 
 	void OnTriggerEnter (Collider other)
 	{
+        
 		if (other.gameObject.tag == "isTriggerBox") 
 		{
 			if (Controller.muscleWallCount > 2) //garrentied 3 walls before a hit
@@ -51,38 +52,38 @@ public class front_wall_collider : MonoBehaviour {
 		else if (other.gameObject.tag == "muscleENEMY" || other.gameObject.tag == "muscleAI1" || 
 				other.gameObject.tag == "muscleAI2" || other.gameObject.tag == "muscleAI3")
 		{
-			if (this.transform.parent.gameObject.name == "bicep flex left up and right down")
+            if (this.transform.parent.gameObject.name == "bicep flex left up and right down(Clone)")
 				other.gameObject.GetComponent<Animator> ().SetTrigger ("left up right down bicep flex");
 
-			else if (this.transform.parent.gameObject.name == "bicep flex right up and left down")
+            else if (this.transform.parent.gameObject.name == "bicep flex right up and left down(Clone)")
 				other.gameObject.GetComponent<Animator> ().SetTrigger ("right up left down bicep flex");
 
-			else if (this.transform.parent.gameObject.name == "double bicept flex")
+            else if (this.transform.parent.gameObject.name == "double bicept flex(Clone)")
 				other.gameObject.GetComponent<Animator> ().SetTrigger ("double bicep flex");
 
-			else if (this.transform.parent.gameObject.name == "double bicept flex down")
+            else if (this.transform.parent.gameObject.name == "double bicept flex down(Clone)")
 				other.gameObject.GetComponent<Animator> ().SetTrigger ("double bicep flex down");
 
-			else if (this.transform.parent.gameObject.name == "left bicept flex")
+            else if (this.transform.parent.gameObject.name == "left bicept flex(Clone)")
 				other.gameObject.GetComponent<Animator> ().SetTrigger ("left bicep flex");
 
-			else if (this.transform.parent.gameObject.name == "right bicept flex")
+            else if (this.transform.parent.gameObject.name == "right bicept flex(Clone)")
 				other.gameObject.GetComponent<Animator> ().SetTrigger ("right bicep flex");
 
-			else if (this.transform.parent.gameObject.name == "left bicept flex down")
+            else if (this.transform.parent.gameObject.name == "left bicept flex down(Clone)")
 				other.gameObject.GetComponent<Animator> ().SetTrigger ("left bicep flex down");
 
-			else if (this.transform.parent.gameObject.name == "right bicept flex down")
+            else if (this.transform.parent.gameObject.name == "right bicept flex down(Clone)")
 				other.gameObject.GetComponent<Animator> ().SetTrigger ("right bicep flex down");
 
-			else if (this.transform.parent.gameObject.name == "touchdown")
+            else if (this.transform.parent.gameObject.name == "touchdown(Clone)")
 				other.gameObject.GetComponent<Animator> ().SetTrigger ("touchdown");
 
-			else if (this.transform.parent.gameObject.name == "touchdown down")
+            else if (this.transform.parent.gameObject.name == "touchdown down(Clone)")
 				other.gameObject.GetComponent<Animator> ().SetTrigger ("touchdown down");
-
-			else if (this.transform.parent.gameObject.name == "tpose")
-				other.gameObject.GetComponent<Animator> ().SetTrigger ("tpose");
+         
+			else if (this.transform.parent.gameObject.name == "tpose(Clone)")
+                other.gameObject.GetComponent<Animator>().SetTrigger("tpose");
 		}
 
 	}
