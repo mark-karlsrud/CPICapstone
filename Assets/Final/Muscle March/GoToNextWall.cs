@@ -9,6 +9,7 @@ public class GoToNextWall : MonoBehaviour
     public Queue<Transform> walls;
     private Transform target;
     NavMeshAgent agent;
+    Rigidbody rigidbody;
     public int startAtWall = -1;
 
     // Use this for initialization
@@ -42,17 +43,19 @@ public class GoToNextWall : MonoBehaviour
 
         walls = new Queue<Transform>(list);
 
+        rigidbody = GetComponent<Rigidbody>();
+        agent = GetComponent<NavMeshAgent>();
+
         if(startAtWall > -1){
             while(walls.Peek().gameObject.name != startAtWall.ToString()){
                 walls.Dequeue();
             }
-            NavMeshAgent n = GetComponent<NavMeshAgent>();
-            n.enabled = false;
+            
+            agent.enabled = false;
             transform.position = GameObject.Find(startAtWall.ToString()).transform.position;
-            n.enabled = true;
+            agent.enabled = true;
         }
 
-        agent = GetComponent<NavMeshAgent>();
         target = walls.Dequeue();
     }
 
@@ -61,6 +64,10 @@ public class GoToNextWall : MonoBehaviour
     {
         Debug.Log("going to block " + target.gameObject.name);
         agent.SetDestination(target.position);
+
+        //If falling
+        if(!agent.enabled)
+            transform.Translate(Vector3.forward / agent.speed);
     }
 
     void OnTriggerEnter(Collider col)
@@ -70,8 +77,20 @@ public class GoToNextWall : MonoBehaviour
             target = walls.Dequeue();
             //Destroy(col.gameObject);
         }
-    }
 
+        //Special conditions for falling
+        if (col.gameObject.name == "72" || col.gameObject.name == "86")
+        {
+            agent.enabled = false;
+            rigidbody.useGravity = true;
+        }
+        if (col.gameObject.name == "fallOnMe")
+        {
+            agent.enabled = true;
+            rigidbody.useGravity = false;
+        }
+    }
+    
     public void setTarget()
     {
         target = walls.Dequeue();
