@@ -103,19 +103,4 @@ public class CopyPose : MonoBehaviour {
         noPose = true;
         noPoseTimer.Enabled = false;
     }
-
-    void OnTriggerEnter(Collider col)
-    {
-        if (col.gameObject.tag != "destination")
-        {
-            if (animator.GetCurrentAnimatorStateInfo(3).IsName(col.gameObject.name))
-            {
-
-            }
-            else
-            {
-                Debug.Log("FAIL");
-            }
-        }
-    }
 }

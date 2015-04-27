@@ -40,4 +40,10 @@ public class CardioScript : MonoBehaviour {
         //rect.width = (cardio / (float)maxCardio) * fullWidth;
         //cardioBar.pixelInset = rect;
 	}
+
+    public int getCardio()
+    {
+        Debug.Log((int)(100 * cardio / (float)maxCardio));
+        return (int)(100 * cardio/(float)maxCardio);
+    }
 }
