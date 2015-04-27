@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 public class PointScript : MonoBehaviour {
 
-    public Text scoreText;
+    //public Text scoreText;
     private int score;
     private CardioScript cardio;
     private Animator animator;
@@ -17,7 +17,7 @@ public class PointScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        scoreText.text = score.ToString();
+        //scoreText.text = score.ToString();
 	}
 
     void OnTriggerEnter(Collider col)
