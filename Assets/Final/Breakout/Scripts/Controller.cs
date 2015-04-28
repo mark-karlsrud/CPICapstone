@@ -14,7 +14,7 @@ public class Controller : MonoBehaviour {
 
 	//////muscle march scores//////
 	public static int[] muscleTimes = new int[10];
-	public static int myMuscleTime = 999999;
+	public static int myMuscleTime = 0;
 	public static string[] muscleNames = new string[10];
 	public static string myMuscleName = "";
 	public static int hits = 0;
@@ -23,7 +23,7 @@ public class Controller : MonoBehaviour {
 
 	/// //////Clock scores//////
 	public static int[] clockTimes = new int[10];
-	public static int myClockTime = 999999;
+	public static int myClockTime = 0;
 	public static string[] clockNames = new string[10];
 	public static string myClockName = "";
 	//////Clock scores//////

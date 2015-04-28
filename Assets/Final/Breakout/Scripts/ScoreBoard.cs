@@ -23,12 +23,13 @@ public class ScoreBoard : MonoBehaviour {
 	// Update is called once per frame
 	void Update () 
 	{
+        Controller.theScore = score;
 			if (destroy) 
 			{
 			Destroy (spawner);
 			ChangeScene s = gameObject.AddComponent<ChangeScene>();
 			s.scene = "leaderboard";
-			s.waitTime=10;//10;
+			s.waitTime=10;
 			destroy=false;
 			}
 

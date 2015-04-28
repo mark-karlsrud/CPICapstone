@@ -23,7 +23,7 @@ public class CardioScript : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         if (Input.GetKey(KeyCode.M) || presentationScript.isRunning)
-            cardio++;
+            cardio+=3;
         else
             cardio--;
         script.SetNewValue(cardio,maxCardio);
