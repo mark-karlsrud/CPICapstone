@@ -7,6 +7,11 @@ public class SetWalls : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+        GameObject railParent = GameObject.Find("Rail");
+        foreach (Transform wall in railParent.transform)
+        {
+            wall.gameObject.GetComponent<MeshRenderer>().enabled = false;
+        }
         GameObject wallParent = GameObject.Find("Walls");
         foreach (Transform wall in wallParent.transform)
         {
