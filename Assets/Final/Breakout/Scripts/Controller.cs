@@ -13,12 +13,12 @@ public class Controller : MonoBehaviour {
 	//////break out scores//////
 
 	//////muscle march scores//////
-	public static int[] muscleTimes = new int[10];
-	public static int myMuscleTime = 0;
+	public static int[] muscleScores = new int[10];
+	public static int myMuscleScore = 0;
 	public static string[] muscleNames = new string[10];
 	public static string myMuscleName = "";
-	public static int hits = 0;
-	public static int timeAdded = 15;
+	//public static int hits = 0;
+	//public static int timeAdded = 15;
 	//////muscle march scores//////
 
 	/// //////Clock scores//////
@@ -44,12 +44,17 @@ public class Controller : MonoBehaviour {
 	void Awake()
 	{
 		DontDestroyOnLoad(gameObject);
+        muscleWallCount = 0;
+        muscleAI1Dead = false;
+        muscleAI2Dead = false;
+        muscleAI3Dead = false;
+        muscleHealth = 4;
 	}
 
 	// Use this for initialization
 	void Start () {
 		SerializeINI.DeSerialize ();
-		Application.LoadLevel (0);
+		Application.LoadLevel (11);
 	}
 	
 	// Update is called once per frame

@@ -8,7 +8,7 @@ public class CardioScript : MonoBehaviour {
     private GUIBarScript script;
     public int maxCardio = 1000;
     //public GUITexture cardioBar;
-    private float fullWidth;
+    private float fullWidth,startTime;
     public Camera camera;
     private MuscelPresentationScript presentationScript;
 
@@ -22,10 +22,11 @@ public class CardioScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        
         if (Input.GetKey(KeyCode.M) || presentationScript.isRunning)
             cardio+=3;
         else
-            cardio--;
+            cardio-=2;
         script.SetNewValue(cardio,maxCardio);
 
         if (cardio > maxCardio)
@@ -33,7 +34,8 @@ public class CardioScript : MonoBehaviour {
         else if (cardio <= 0)
         {
             cardio = 0;
-            Debug.Log("Dead");
+            StartCoroutine("scaleAndRestart");
+            
         }
 
         //Rect rect = cardioBar.pixelInset;
@@ -46,4 +48,13 @@ public class CardioScript : MonoBehaviour {
         Debug.Log((int)(100 * cardio / (float)maxCardio));
         return (int)(100 * cardio/(float)maxCardio);
     }
+
+    public IEnumerator scaleAndRestart()
+    {
+        yield return new WaitForSeconds(3);
+        Application.LoadLevel(Application.loadedLevel);
+
+    }
+
+
 }

@@ -24,7 +24,7 @@ public class SerializeINI : MonoBehaviour
 		//saves muscle march high scores and names
 		for(int i=0; i<10; i++)
 		{
-			sb.AppendLine(Controller.muscleTimes[i].ToString());
+			sb.AppendLine(Controller.muscleScores[i].ToString());
 		}
 		for(int i=0; i<10; i++)
 		{
@@ -77,7 +77,7 @@ public class SerializeINI : MonoBehaviour
 			for(int i=0; i<10; i++)
 			{
 				line = reader.ReadLine();
-				Controller.muscleTimes[i] = Convert.ToInt32(line);
+				Controller.muscleScores[i] = Convert.ToInt32(line);
 			}
 			for(int i=0; i<10; i++)
 			{
@@ -117,7 +117,7 @@ public class SerializeINI : MonoBehaviour
 				Controller.highscore[i] = 0;
 				Controller.names[i] = "aaa";
 
-				Controller.muscleTimes[i] = 1500;
+				Controller.muscleScores[i] = 0;
 				Controller.muscleNames[i] = "aaa";
 
 				Controller.clockTimes[i] = 1500;

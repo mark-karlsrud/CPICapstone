@@ -74,7 +74,7 @@ public class ClockScoreboardGUI : MonoBehaviour {
 		if(Controller.myClockTime < Controller.clockTimes[9])
 			Controller.myClockName = GUI.TextField(new Rect(50, 50, 200, 90), Controller.myClockName,3);
 		GUI.skin = yourscore;
-		GUI.Label(new Rect(0, 0, 300, 50), "\t\tYour score: "+Controller.theScore);
+        GUI.Label(new Rect(0, 0, 300, 50), "\t\tYour score: " + Controller.myClockTime);
 		GUI.EndGroup();
 
 		GUI.skin = skin;

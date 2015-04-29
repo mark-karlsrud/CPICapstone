@@ -81,8 +81,8 @@ public class front_wall_collider : MonoBehaviour {
 
             else if (this.transform.parent.gameObject.name == "touchdown down(Clone)")
 				other.gameObject.GetComponent<Animator> ().SetTrigger ("touchdown down");
-         
-			else if (this.transform.parent.gameObject.name == "tpose(Clone)")
+
+            else if (this.transform.parent.gameObject.name == "tpose(Clone)")
                 other.gameObject.GetComponent<Animator>().SetTrigger("tpose");
 		}
 

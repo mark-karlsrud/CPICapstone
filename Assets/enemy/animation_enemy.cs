@@ -13,18 +13,18 @@ public class animation_test: MonoBehaviour {
 	bool isInside;
 
 	//pose hashes
-	int noPoseHash = Animator.StringToHash ("no pose");
-	int doubleBicepFlexDownHash = Animator.StringToHash("double bicep flex down");
-	int doubleBicepFlexHash = Animator.StringToHash("double bicep flex");
-	int leftBicepFlexDownHash = Animator.StringToHash("left bicep flex down");
-	int leftBicepFlexHash = Animator.StringToHash("left bicep flex");
-	int leftUpRightDownBicepFlexHash = Animator.StringToHash("left up right down bicep flex");
-	int rightBicepFlexDownHash = Animator.StringToHash("right bicep flex down");
-	int rightBicepFlexHash = Animator.StringToHash("right bicep flex");
-	int rightUpLeftDownBicepFlexHash = Animator.StringToHash("right up left down bicep flex");
-	int touchdownDownHash = Animator.StringToHash("touchdown down");
-	int touchdownHash = Animator.StringToHash("touchdown");
-	int tposeHash = Animator.StringToHash("tpose");
+    public static int noPoseHash = Animator.StringToHash("no pose");
+    public static int doubleBicepFlexDownHash = Animator.StringToHash("double bicep flex down");
+    public static int doubleBicepFlexHash = Animator.StringToHash("double bicep flex");
+    public static int leftBicepFlexDownHash = Animator.StringToHash("left bicep flex down");
+    public static int leftBicepFlexHash = Animator.StringToHash("left bicep flex");
+    public static int leftUpRightDownBicepFlexHash = Animator.StringToHash("left up right down bicep flex");
+    public static int rightBicepFlexDownHash = Animator.StringToHash("right bicep flex down");
+    public static int rightBicepFlexHash = Animator.StringToHash("right bicep flex");
+    public static int rightUpLeftDownBicepFlexHash = Animator.StringToHash("right up left down bicep flex");
+    public static int touchdownDownHash = Animator.StringToHash("touchdown down");
+    public static int touchdownHash = Animator.StringToHash("touchdown");
+    public static int tposeHash = Animator.StringToHash("tpose");
 
 	// Use this for initialization
 	void Start () {

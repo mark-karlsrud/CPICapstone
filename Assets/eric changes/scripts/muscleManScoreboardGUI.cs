@@ -13,7 +13,6 @@ public class muscleManScoreboardGUI : MonoBehaviour {
 	public float width_scale;
 	public float height_scale;
 	public static bool turnOff = false;
-	private string[] seconds = new string[10];
 	
 	void Awake()
 	{
@@ -48,33 +47,25 @@ public class muscleManScoreboardGUI : MonoBehaviour {
 		          "\t10. "+Controller.muscleNames[9]);
 		GUI.EndGroup();
 
-		for(int i = 0; i<10; i++)
-		{
-			if(Controller.muscleTimes[i]%60f < 10)
-				seconds[i] = "0"+Controller.muscleTimes[0]%60f;
-			else
-				seconds[i] = ""+Controller.muscleTimes[0]%60f;
-		}
-
 		GUI.BeginGroup(new Rect(native_width/2-200, 100, 300,500));
 		GUI.Label(new Rect(170, 0, 300, 400), "Time:\n" + 
-		          "\t "+Mathf.Floor(Controller.muscleTimes[0]/60f)+":"+seconds[0]+"\n"+
-		          "\t "+Mathf.Floor(Controller.muscleTimes[1]/60f)+":"+seconds[1]+"\n"+
-		          "\t "+Mathf.Floor(Controller.muscleTimes[2]/60f)+":"+seconds[2]+"\n"+
-		          "\t "+Mathf.Floor(Controller.muscleTimes[3]/60f)+":"+seconds[3]+"\n"+
-		          "\t "+Mathf.Floor(Controller.muscleTimes[4]/60f)+":"+seconds[4]+"\n"+
-		          "\t "+Mathf.Floor(Controller.muscleTimes[5]/60f)+":"+seconds[5]+"\n"+
-		          "\t "+Mathf.Floor(Controller.muscleTimes[6]/60f)+":"+seconds[6]+"\n"+
-		          "\t "+Mathf.Floor(Controller.muscleTimes[7]/60f)+":"+seconds[7]+"\n"+
-		          "\t "+Mathf.Floor(Controller.muscleTimes[8]/60f)+":"+seconds[8]+"\n"+
-		          "\t "+Mathf.Floor(Controller.muscleTimes[9]/60f)+":"+seconds[9]);
+		          "\t "+Controller.muscleScores[0]+"\n"+
+		          "\t "+Controller.muscleScores[1]+"\n"+
+		          "\t "+Controller.muscleScores[2]+"\n"+
+		          "\t "+Controller.muscleScores[3]+"\n"+
+		          "\t "+Controller.muscleScores[4]+"\n"+
+		          "\t "+Controller.muscleScores[5]+"\n"+
+		          "\t "+Controller.muscleScores[6]+"\n"+
+		          "\t "+Controller.muscleScores[7]+"\n"+
+		          "\t "+Controller.muscleScores[8]+"\n"+
+		          "\t "+Controller.muscleScores[9]);
 		GUI.EndGroup();
 
 		GUI.BeginGroup(new Rect(native_width/2+70, native_height/2-100, 300,100));
-		if((Controller.myMuscleTime + Controller.hits*Controller.timeAdded) < Controller.muscleTimes[9])
+		if(Controller.myMuscleScore > Controller.muscleScores[9])
 			Controller.myMuscleName = GUI.TextField(new Rect(50, 50, 200, 90), Controller.myMuscleName,3);
 		GUI.skin = yourscore;
-		GUI.Label(new Rect(0, 0, 300, 50), "\t\tYour score: "+Controller.theScore);
+        GUI.Label(new Rect(0, 0, 300, 50), "\t\tYour score: " + Controller.myMuscleScore);
 		GUI.EndGroup();
 
 		GUI.skin = skin;
@@ -83,26 +74,25 @@ public class muscleManScoreboardGUI : MonoBehaviour {
 			InteractionManager.usedOnce = false;
 			GrabDropScript.grabbedPaddle = false;
 
-			if((Controller.myMuscleTime + Controller.hits*Controller.timeAdded) < Controller.muscleTimes[9])
+			if(Controller.myMuscleScore > Controller.muscleScores[9])
 			{
-				Controller.muscleTimes[9] = (Controller.myMuscleTime + Controller.hits*Controller.timeAdded);
+				Controller.muscleScores[9] = Controller.myMuscleScore;
 				Controller.muscleNames[9] = Controller.myMuscleName;
 			}
 
 			for(int i = 8; i>-1; i--)
 			{
-				if((Controller.myMuscleTime + Controller.hits*Controller.timeAdded) < Controller.muscleTimes[i])
+				if(Controller.myMuscleScore > Controller.muscleScores[i])
 				{
-					Controller.muscleTimes[i+1] = Controller.muscleTimes[i];
+					Controller.muscleScores[i+1] = Controller.muscleScores[i];
 					Controller.muscleNames[i+1] = Controller.muscleNames[i];
-					Controller.muscleTimes[i] = (Controller.myMuscleTime + Controller.hits*Controller.timeAdded);
+					Controller.muscleScores[i] = Controller.myMuscleScore;
 					Controller.muscleNames[i] = Controller.myMuscleName;
 				}
 			}
 			SerializeINI.Serialize();
 			turnOff=true;
-			Controller.myMuscleTime=0;
-			Controller.hits = 0;
+			Controller.myMuscleScore=0;
 			Application.LoadLevel(0);
 
 		

@@ -4,20 +4,32 @@ using System.Collections;
 
 public class PointScript : MonoBehaviour {
 
-    //public Text scoreText;
+    public GUIText scoreText;
     private int score;
     private CardioScript cardio;
     private Animator animator;
 
 	// Use this for initialization
 	void Start () {
+        score = 0;
         cardio = GetComponent<CardioScript>();
         animator = GetComponent<Animator>();
 	}
+
+    void Awake()
+    {
+        score = 0;
+    }
+
+    public void rightPose()
+    {
+        score += 100;
+    }
 	
 	// Update is called once per frame
 	void Update () {
-        //scoreText.text = score.ToString();
+        scoreText.text = score.ToString();
+        Controller.myMuscleScore = score;
 	}
 
     void OnTriggerEnter(Collider col)
@@ -25,16 +37,6 @@ public class PointScript : MonoBehaviour {
         if (col.gameObject.name == "wall collider")
         {
             score += cardio.getCardio();
-
-            if (animator.GetCurrentAnimatorStateInfo(3).IsName(col.gameObject.name))
-            {
-                Debug.Log("right pose");
-                score += 100;
-            }
-            else
-            {
-                Debug.Log("wrong pose");
-            }
         }
     }
 }
